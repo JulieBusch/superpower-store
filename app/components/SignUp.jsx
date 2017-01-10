@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import {  } from '../redux/auth';
+import { addNewUser } from '../reducers/user';
+import { browserHistory } from 'react-router'
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -80,20 +81,22 @@ class Signup extends React.Component {
     // const { message } = this.props;
     event.preventDefault();
     const credentials = {
+      name: event.target.name.value,
       email: event.target.email.value,
       password: event.target.password.value
     };
     this.props.signup(credentials);
+    browserHistory.push('/success')
   }
 }
 
 /* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = () => {
-
+   return ({})
 };
 
-const mapDispatchToProps = {  };
+const mapDispatchToProps = { signup: addNewUser };
 // // equivalent to:
 // const mapDispatch = (dispatch) => {
 //   return {

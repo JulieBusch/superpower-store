@@ -50,7 +50,7 @@ class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-      <ul className="nav navbar-nav navbar-right">
+      <ul className="nav navbar-nav navbar-right login-ul">
         <li>
          <Link to="/signup" activeClassName="active">signup</Link>
         </li>

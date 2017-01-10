@@ -10,8 +10,9 @@ import Jokes from './components/Jokes'
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
+import Success from './components/Success'
 
-import { selectUser } from './reducers/user'
+import { selectUser, getAllUsers } from './reducers/user'
 
 
 const ExampleApp = connect(
@@ -24,6 +25,10 @@ const ExampleApp = connect(
     </div>
 )
 
+const onAppEnter = () => {
+  store.dispatch(getAllUsers())
+}
+
 const onUserpageEnter = (nextRouterState) => {
   const userId = nextRouterState.params.id;
   store.dispatch(selectUser(userId))
@@ -32,11 +37,12 @@ const onUserpageEnter = (nextRouterState) => {
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
+        <Route path="/success" component={Success} />
       </Route>
     </Router>
   </Provider>,
