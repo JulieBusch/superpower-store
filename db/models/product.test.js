@@ -5,10 +5,10 @@ const Product = require('./product')
 const {expect} = require('chai')
 
 describe("'Product' model", () => {
-	before('wait for the db', () => db.didSync)
+	beforeEach('wait for the db', () => db.didSync)
 
 	var superpower;
-	beforeEach(function(){
+	before(function(){
 		superpower = Product.build({
 			name: 'Healing',
 			image: 'someImage',
@@ -18,7 +18,7 @@ describe("'Product' model", () => {
 			thumbnail: 'littleImage'
 		});
 	});
-	
+
 
 	describe('attributes definition', function(){
 
@@ -29,7 +29,7 @@ describe("'Product' model", () => {
 				expect(savedPower.image).to.equal('someImage');
 				expect(savedPower.description).to.equal('Heal Super Fast');
 				expect(savedPower.price).to.equal('29.95');
-				expect(savedPower.tags).to.deep.equal(['helpful','ethical']);
+				expect(savedPower.tags).to.deep.equal(['helpful', 'ethical']);
 				expect(savedPower.thumbnail).to.equal('littleImage');
 			})
 		})
@@ -67,9 +67,11 @@ describe("'Product' model", () => {
 	})
 
 	describe('`findSimilarItems` instance method', function(){
-		var secondPower;
+
+		var secondPower, thirdPower;
+
 		before(function(){
-			secondPower = Product.create({
+			secondPower = Product.build({
 				name: 'SuperHearing',
 				image: 'someImage',
 				description: 'Hear Really Well',
@@ -77,11 +79,8 @@ describe("'Product' model", () => {
 				tags: ['helpful', 'dubious'],
 				thumbnail: 'littleImage'
 			});
-		});
 
-		var thirdPower;
-		before(function(){
-			thirdPower = Product.create({
+			thirdPower = Product.build({
 				name: 'Immortality',
 				image: 'someImage',
 				description: 'Never die',
@@ -89,15 +88,22 @@ describe("'Product' model", () => {
 				tags: ['lonely', 'awesome'],
 				thumbnail: 'littleImage'
 			});
-		});	
+
+			return Promise.all([secondPower, thirdPower]);
+
+		});
 
 
 		it('returns all products with matching tags', function(){
-			return superpower.save()
-			.then(savedPower => savedPower.findSimilarItems())
+			let secondInstance;
+			return Promise.all([superpower.save(), secondPower.save(), thirdPower.save()])
+			.then(([first, second, third]) => {
+				secondInstance = second;
+				return first.findSimilarItems()
+			})
 			.then(similarProducts => {
 				console.log(similarProducts);
-				expect(similarProducts[0]).to.deep.equal(secondPower);
+				expect(similarProducts[0].dataValues).to.deep.equal(secondInstance.dataValues);
 			})
 		})
 
