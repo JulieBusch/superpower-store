@@ -5,17 +5,22 @@ const router = require('express').Router();
 const Product = db.model('products');
 
 router.get('/', function(req, res, next) {
-  // res.send('Hellooooooo');
   Product.findAll()
   .then(products => res.send(products))
   .catch(next);
 });
 
-router.get('/:productId', function(req, res, next){
+router.get('/:productId/similar', function(req, res, next){
 	Product.findById(req.params.productId)
 	.then(product => product.findSimilarItems())
 	.then(similarProducts => res.send(similarProducts))
 	.catch(next);
-})
+});
+
+router.get('/:productId', function(req, res, next) {
+  Product.findById(req.params.productId)
+  .then(product => res.send(product))
+  .catch(next);
+});
 
 module.exports = router;
