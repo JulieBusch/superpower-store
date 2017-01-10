@@ -23,4 +23,6 @@ router.get('/:productId', function(req, res, next) {
   .catch(next);
 });
 
+
+
 module.exports = router;
