@@ -21,7 +21,6 @@
     "skeleton"
   ],
   "author": "",
-
   "homepage": "",
   "dependencies": {
     "axios": "^0.15.2",
