@@ -32,11 +32,13 @@ const Product = db.define('products', {
 }, {
   instanceMethods: {
     findSimilarItems: function() {
-      Product.findAll({
+      return Product.findAll({
         where: {
-          tags: { $contains: this.tags }
+          tags: { $overlap: this.tags },
+          id: {$ne: this.id}
         }
-      });
+      })
+      .catch();
     }
   }
 });

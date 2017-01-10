@@ -11,4 +11,11 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
+router.get('/:productId', function(req, res, next){
+	Product.findById(req.params.productId)
+	.then(product => product.findSimilarItems())
+	.then(similarProducts => res.send(similarProducts))
+	.catch(next);
+})
+
 module.exports = router;
