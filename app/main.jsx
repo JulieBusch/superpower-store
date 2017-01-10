@@ -7,7 +7,7 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 import Jokes from './components/Jokes'
 import Navbar from './components/Navbar'
-import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -25,6 +25,7 @@ render (
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
+        <Route path="/signup" component={SignUp} />
       </Route>
     </Router>
   </Provider>,
