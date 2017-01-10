@@ -8,6 +8,9 @@ import store from './store'
 import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import Userpage from './components/Userpage'
+
+import { selectUser } from './reducers/user'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -16,10 +19,15 @@ const ExampleApp = connect(
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
-      </nav> 
+      </nav>
       {children}
     </div>
 )
+
+const onUserpageEnter = (nextRouterState) => {
+  const userId = nextRouterState.params.id;
+  store.dispatch(selectUser(userId))
+}
 
 render (
   <Provider store={store}>
@@ -27,6 +35,7 @@ render (
       <Route path="/" component={ExampleApp}>
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
+        <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
       </Route>
     </Router>
   </Provider>,

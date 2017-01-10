@@ -19,8 +19,10 @@ render() {
    console.log('props: ', this.props)
    return(
           <div>
+
             <h2>{this.props.user.name}</h2>
             <h3>{this.props.user.email}</h3>
+
           </div>
           )
 }
