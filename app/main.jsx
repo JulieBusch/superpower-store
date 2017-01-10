@@ -7,6 +7,7 @@ import {connect, Provider} from 'react-redux'
 import store from './store'
 import Jokes from './components/Jokes'
 import Navbar from './components/Navbar'
+import Login from './components/Login'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })

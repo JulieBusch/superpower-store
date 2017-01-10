@@ -4,14 +4,24 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {logout as logOutUser} from '../reducers/auth'
 import {Link} from 'react-router'
+import Login from './Login'
 
 /* -----------------    COMPONENT     ------------------ */
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      clicked: false
+    }
+
     this.renderLoginSignup = this.renderLoginSignup.bind(this)
-    this.renderLogout = this.renderLogout.bind(this)
+    this.renderLoggedIn = this.renderLoggedIn.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    this.setState({  clicked: !this.state.clicked  })
   }
 
   render() {
@@ -19,27 +29,19 @@ class Navbar extends React.Component {
       <nav className="navbar navbar-default">
         <div className="container">
           <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target=".navbar-collapse">
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
+
             <Link className="navbar-brand" to="/"><img src="/images/logo.png" /></Link>
           </div>
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li>
-                <Link to="/users" activeClassName="active">home</Link>
+                <Link to="/catalog" activeClassName="active">catalog</Link>
               </li>
               <li>
                 <Link to="/cart" activeClassName="active">my cart</Link>
               </li>
             </ul>
-            { this.props.currentUser ? this.renderLogout() : this.renderLoginSignup() }
+            { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
           </div>
         </div>
       </nav>
@@ -53,16 +55,23 @@ class Navbar extends React.Component {
          <Link to="/signup" activeClassName="active">signup</Link>
         </li>
         <li>
-          <Link to="/login" activeClassName="active">login</Link>
+          <Link to="#" activeClassName="active" onClick={this.handleClick}>login</Link>
+
+            {this.state.clicked && <div id="login"><Login /></div>}
+
         </li>
       </ul>
     )
   }
 
-  renderLogout() {
+  renderLoggedIn() {
     const name = this.props.currentUser.name || this.props.currentUser.email;
+    const userId = this.props.currentUser.id;
     return (
       <ul className="nav navbar-nav navbar-right">
+        <li>
+          <Link to={`/users/${userId}`} activeClassName="active">My Account</Link>
+        </li>
         <li>
         <button
           className="navbar-btn btn btn-default"
