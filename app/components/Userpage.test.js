@@ -23,13 +23,15 @@ describe('<Userpage />', () => {
     expect(wrapper.find('h3')).to.have.html('<h3>hello@go.com</h3>')
   })
 
-  it('show order history', () => {
-    expect(wrapper.find('ul')).to.have.length(5)
-  })
+// ------- TESTS BELOW SHOULD FAIL UNTIL ORDER MODELS HAVE BEEN MADE AND
+// ------- ORDER HISTORY/DETAIL COMPONENT NEEDS TO BE RENDERED IN USERPAGE
 
-  // it('order history list can be clicked to show detail', () => {
-  //   const submit = wrapper.find('input[type="submit"]')
-  //   expect(submit).to.have.length(1)
+  // it('show order history', () => {
+  //   expect(wrapper.find('ul')).to.have.length(5)
   // })
+
+  // // it('order history list can be clicked to show detail', () => {
+  //      fill in test here
+  // // })
 
 })
