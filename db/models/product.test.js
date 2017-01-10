@@ -102,17 +102,35 @@ describe("'Product' model", () => {
 				return first.findSimilarItems()
 			})
 			.then(similarProducts => {
-				console.log(similarProducts);
 				expect(similarProducts[0].dataValues).to.deep.equal(secondInstance.dataValues);
 			})
 		})
 
+		it('does not return products without matching tags', function() {
+			let thirdInstance;
+			return Promise.all([superpower.save(), secondPower.save(), thirdPower.save()])
+			.then(([first, second, third]) => {
+				thirdInstance = third;
+				return first.findSimilarItems()
+			})
+			.then(similarProducts => {
+				expect(similarProducts.length).to.equal(1)
+				expect(similarProducts[0].dataValues).to.not.deep.equal(thirdInstance.dataValues);
+			})
+		})
 
-
-
-		xit('does not return products without matching tags')
-
-		xit('does not return itself')
+		it('does not return itself', function() {
+			let firstInstance;
+			return Promise.all([superpower.save(), secondPower.save(), thirdPower.save()])
+			.then(([first, second, third]) => {
+				firstInstance = first;
+				return first.findSimilarItems()
+			})
+			.then(similarProducts => {
+				expect(similarProducts.length).to.equal(1)
+				expect(similarProducts[0].dataValues).to.not.deep.equal(firstInstance.dataValues);
+			})
+		})
 	})
 
 
