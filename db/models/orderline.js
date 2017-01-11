@@ -2,14 +2,28 @@
 
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-const Product = require('./product')
+
 
 //orderline is association class
   //contains orderId and productId, no orderlineId
 
 const Orderline = db.define('orderlines', {
-  quantity: Sequelize.INTEGER,
-  itemPrice: Sequelize.DECIMAL(10, 2)
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1,
+  },
+  itemPrice: {
+    type: Sequelize.DECIMAL(10, 2),
+    allowNull: false,
+  },
+}, {
+  getterMethods: {
+    subtotal: function() {
+      if (this.itemPrice) {
+        return this.itemPrice*this.quantity
+      } else return '';
+    }
+  }
 })
 
 module.exports = Orderline
