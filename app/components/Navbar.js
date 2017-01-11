@@ -30,7 +30,7 @@ class Navbar extends React.Component {
         <div className="container">
           <div className="navbar-header">
 
-            <Link className="navbar-brand" to="/"><img src="/images/logo.png" /></Link>
+            <Link className="navbar-brand" to="/"><img src="/logo-test.png" /></Link>
           </div>
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
@@ -70,7 +70,7 @@ class Navbar extends React.Component {
     return (
       <ul className="nav navbar-nav navbar-right">
         <li>
-          <Link to={`/users/${userId}`} activeClassName="active">My Account</Link>
+          <Link to={`/user/${userId}`} activeClassName="active">My Account</Link>
         </li>
         <li>
         <button

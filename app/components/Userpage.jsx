@@ -20,8 +20,8 @@ render() {
    return(
           <div>
 
-            <h2>{this.props.user.name}</h2>
-            <h3>{this.props.user.email}</h3>
+            name: <h2>{this.props.user.name}</h2>
+            email: <h3>{this.props.user.email}</h3>
 
           </div>
           )
