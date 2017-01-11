@@ -12,6 +12,7 @@ import Userpage from './components/Userpage'
 import Products from './components/Products'
 
 import { selectUser } from './reducers/user'
+import { receiveAllProducts } from './reducers/products'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -30,6 +31,10 @@ const onUserpageEnter = (nextRouterState) => {
   store.dispatch(selectUser(userId))
 }
 
+const onProductsEnter =(nextRouterState) => {
+  store.dispatch(receiveAllProducts())
+}
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -37,7 +42,7 @@ render (
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
-        <Route path="/products" component={Products} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter} />
       </Route>
     </Router>
   </Provider>,

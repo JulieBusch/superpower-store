@@ -26,13 +26,13 @@ export const allProducts = products => ({
 	type: RECEIVE_ALL_PRODUCTS, products
 })
 
-export const receiveAllProducts = () => {
-	dispatch =>
+export const receiveAllProducts = () => 
+	dispatch => 
 		axios.get('/api/products')
 			.then(res => res.data)
-			.then(foundProducts) => dispatch(allProducts(foundProducts))
-			.catch((failed) => dispatch(allProducts([])))
-}
+			.then((foundProducts) => dispatch(allProducts(foundProducts)))
+			.catch((failed) => dispatch(allProducts(["products dispatch failure"])))
+
 
 
 
