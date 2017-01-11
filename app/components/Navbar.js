@@ -38,7 +38,7 @@ class Navbar extends React.Component {
                 <Link to="/catalog" activeClassName="active">catalog</Link>
               </li>
               <li>
-                <Link to="/cart" activeClassName="active">my cart</Link>
+                <Link to="/cart" className="navbar-icon"><img src="/cart.png" /></Link>
               </li>
             </ul>
             { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
