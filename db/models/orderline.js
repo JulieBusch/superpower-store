@@ -7,22 +7,9 @@ const Product = require('./product')
 //orderline is association class
   //contains orderId and productId, no orderlineId
 
-const Orderline = db.define('orderline', {
+const Orderline = db.define('orderlines', {
   quantity: Sequelize.INTEGER,
-  itemPrice: {
-    type: Sequelize.DECIMAL(10,2),
-    get: function() {
-      const productId = this.product_id
-      Product.findById(productId)
-      .then(foundProduct => foundProduct.price)
-      .then(productPrice => {
-        return productPrice
-      })
-    }
-  }
-
+  itemPrice: Sequelize.DECIMAL(10, 2)
 })
-
-
 
 module.exports = Orderline
