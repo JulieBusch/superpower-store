@@ -5,6 +5,8 @@ const initialState = {
    selectedUser: {}
 }
 
+/* ------------       REDUCER     ------------------ */
+
 const reducer = (state = initialState, action) => {
 
    const newState = Object.assign({}, state)
@@ -31,11 +33,13 @@ const reducer = (state = initialState, action) => {
    return newState
 }
 
+/* -----------------    ACTIONS     ------------------ */
 
 const SELECTED_USER = 'SELECTED_USER'
 const CREATED_USER = 'CREATED_USER'
 const ALL_USERS = 'ALL_USERS'
 
+/* ------------   ACTION CREATORS     ------------------ */
 
 export const selectedUser = user => ({
    type: SELECTED_USER, user
@@ -49,6 +53,7 @@ export const allUsers = users => ({
    type: ALL_USERS, users
 })
 
+/* ------------       DISPATCHERS     ------------------ */
 
 export const selectUser = (userId) =>
    dispatch =>
