@@ -9,6 +9,7 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import Userpage from './components/Userpage'
+import Products from './components/Products'
 
 import { selectUser } from './reducers/user'
 
@@ -36,6 +37,7 @@ render (
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
+        <Route path="/products" component={Products} />
       </Route>
     </Router>
   </Provider>,
