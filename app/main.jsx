@@ -38,8 +38,8 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
+        {/*<IndexRedirect to="/jokes" />*/}
+        {/*<Route path="/jokes" component={Jokes} />*/}
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
         <Route path="/success" component={Success} />

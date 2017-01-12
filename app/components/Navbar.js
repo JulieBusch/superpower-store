@@ -26,23 +26,25 @@ export class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav>
         <div className="container">
-          <div className="navbar-header">
+          <div className="nav-left">
+            <div className="navbar-logo">
 
-            <Link className="navbar-brand" to="/"><img src="/logo-test.png" /></Link>
+              <Link className="navbar-brand" to="/"><img src="/logo-test.png" /></Link>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <Link to="/products" activeClassName="active">Products</Link>
+                </li>
+                <li>
+                  <Link to="/cart" className="cart-icon"><img src="/cart.png" /></Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="collapse navbar-collapse">
-            <ul className="nav navbar-nav">
-              <li>
-                <Link to="/catalog" activeClassName="active">catalog</Link>
-              </li>
-              <li>
-                <Link to="/cart" className="navbar-icon"><img src="/cart.png" /></Link>
-              </li>
-            </ul>
-            { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
-          </div>
+              { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
         </div>
       </nav>
     )
@@ -50,17 +52,19 @@ export class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-      <ul className="nav navbar-nav navbar-right login-ul">
-        <li>
-         <Link to="/signup" activeClassName="active">signup</Link>
-        </li>
-        <li>
-          <Link to="#" activeClassName="active" onClick={this.handleClick}>login</Link>
+      <div className="nav-right">
+        <ul className="login-signup">
+          <li>
+           <Link to="/signup" activeClassName="active">signup</Link>
+          </li>
+          <li>
+            <Link to="#" activeClassName="active" onClick={this.handleClick}>login</Link>
 
-            {this.state.clicked && <div id="login"><Login /></div>}
+              {this.state.clicked && <div id="login"><Login /></div>}
 
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </div>
     )
   }
 
@@ -68,18 +72,20 @@ export class Navbar extends React.Component {
     const name = this.props.currentUser.name || this.props.currentUser.email;
     const userId = this.props.currentUser.id;
     return (
-      <ul className="nav navbar-nav navbar-right">
-        <li>
-          <Link to={`/user/${userId}`} activeClassName="active">My Account</Link>
-        </li>
-        <li>
-        <button
-          className="navbar-btn btn btn-default"
-          onClick={this.props.logout}>
-          logout {name}
-        </button>
-        </li>
-      </ul>
+      <div className="nav-right">
+        <ul className="logged-in">
+          <li>
+            <Link to={`/user/${userId}`} activeClassName="active">My Account</Link>
+          </li>
+          <li>
+          <button
+            className="log-out-btn"
+            onClick={this.props.logout}>
+            logout {name}
+          </button>
+          </li>
+        </ul>
+      </div>
     )
   }
 }
