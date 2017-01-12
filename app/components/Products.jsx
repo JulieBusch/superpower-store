@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
 }
 
 
-class Products extends Component {
+export class Products extends Component {
 
   constructor(props) {
     super(props)
