@@ -6,23 +6,28 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 import Jokes from './components/Jokes'
-import Login from './components/Login'
-import WhoAmI from './components/WhoAmI'
-import Userpage from './components/Userpage'
 
-import { selectUser } from './reducers/user'
+import Navbar from './components/Navbar'
+import SignUp from './components/SignUp'
+import Userpage from './components/Userpage'
+import Success from './components/Success'
+
+import { selectUser, getAllUsers } from './reducers/user'
+
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
 ) (
   ({ user, children }) =>
     <div>
-      <nav>
-        {user ? <WhoAmI/> : <Login/>}
-      </nav>
+      <Navbar/>
       {children}
     </div>
 )
+
+const onAppEnter = () => {
+  store.dispatch(getAllUsers())
+}
 
 const onUserpageEnter = (nextRouterState) => {
   const userId = nextRouterState.params.id;
@@ -32,10 +37,12 @@ const onUserpageEnter = (nextRouterState) => {
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
         <IndexRedirect to="/jokes" />
         <Route path="/jokes" component={Jokes} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
+        <Route path="/success" component={Success} />
       </Route>
     </Router>
   </Provider>,
