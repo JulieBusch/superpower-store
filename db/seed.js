@@ -18,7 +18,7 @@ const productsArr = [
 	  name: 'Flight',
 	  image:'hjkhk',
 	  description: 'hkjdhkjh',
-	  price: 12.00,
+	  price: 130.00,
 	  tags: ["cool", "awesome"],
 	  thumbnail: 'hjkhk'
 	},
@@ -26,7 +26,7 @@ const productsArr = [
 	  name: 'Ethical X-ray Vision',
 	  image:'hjkhk',
 	  description: 'hkjdhkjh',
-	  price: 12.00,
+	  price: 125.00,
 	  tags: ["lame", "ethical"],
 	  thumbnail: 'hjkhk'
 	},
@@ -34,7 +34,7 @@ const productsArr = [
 	  name: 'Magnanimity',
 	  image:'hjkhk',
 	  description: 'hkjdhkjh',
-	  price: 12.00,
+	  price: 120.00,
 	  tags: ["awesome", "ethical"],
 	  thumbnail: 'hjkhk'
 	},
@@ -42,16 +42,16 @@ const productsArr = [
 	  name: 'Telekinesis',
 	  image:'hjkhk',
 	  description: 'hkjdhkjh',
-	  price: 12.00,
+	  price: 100.00,
 	  tags: ["awesome", "dangerous"],
 	  thumbnail: 'hjkhk'
 	}
 ]
 
 const seedOrderlines = () => db.Promise.map([
-  {order_id: 3, product_id: 2, quantity: 3, itemPrice: 3.00},
-  {order_id: 1, product_id: 4, quantity: 1, itemPrice: 12.00},
-  {order_id: 2, product_id: 1, quantity: 1, itemPrice: 12.00}
+  {order_id: 3, product_id: 2, quantity: 3},
+  {order_id: 1, product_id: 4, quantity: 1},
+  {order_id: 2, product_id: 1, quantity: 1}
 ], orderline => db.model('orderlines').create(orderline))
 
 

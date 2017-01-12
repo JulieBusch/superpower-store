@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const Product = require('./product')
 
 
 //orderline is association class
@@ -13,15 +14,26 @@ const Orderline = db.define('orderlines', {
     defaultValue: 1,
   },
   itemPrice: {
-    type: Sequelize.DECIMAL(10, 2),
-    allowNull: false,
+    type: Sequelize.STRING
   },
 }, {
   getterMethods: {
     subtotal: function() {
       if (this.itemPrice) {
-        return this.itemPrice*this.quantity
+        const result = +this.itemPrice * this.quantity
+        return parseFloat(result.toFixed(2));
       } else return '';
+    }
+  },
+  hooks: {
+    beforeValidate: function(orderlines) {
+      console.log(orderlines.product_id)
+      return Product.findById(orderlines.product_id)
+      .then((foundProduct) => {
+        orderlines.itemPrice = foundProduct.price
+        return orderlines
+      })
+      .catch(err => console.log(err))
     }
   }
 })

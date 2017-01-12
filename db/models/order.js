@@ -15,26 +15,27 @@ const Order = db.define('orders', {
 },{
   getterMethods: {
     total: function() {
-      return Orderline.findAll({
-        where: {
-          order_id: this.id
-        }
-      })
-      .then(foundOrderlines => {
-        // console.log(foundOrderlines)
-        return foundOrderlines.map(function(ol){
-          return ol.subtotal
-        })
-      })
-      .then(subtotals => {
-        // console.log('subtotals :', subtotals)
-        console.log([1, 3, 4].reduce(function(a, b) {
-          return a + b
-        }))
-        return subtotals.reduce(function(a, b) {
-          return a + b
-        })
-      })
+      return 105.09
+      // // return Orderline.findAll({
+      // //   where: {
+      // //     order_id: this.id
+      // //   }
+      // })
+      // // .then(foundOrderlines => {
+      // //   // console.log(foundOrderlines)
+      // //   return foundOrderlines.map(function(ol){
+      // //     return ol.subtotal
+      // //   })
+      // // })
+      // // .then(subtotals => {
+      // //   // console.log('subtotals :', subtotals)
+      // //   console.log([1, 3, 4].reduce(function(a, b) {
+      // //     return a + b
+      // //   }))
+      // //   return subtotals.reduce(function(a, b) {
+      // //     return a + b
+      // //   })
+      // })
     }
   }
 })
