@@ -26,8 +26,12 @@ describe('<Navbar />', () => {
 
   it('shows the login component when login link is clicked', () => {
     wrapper.setState({clicked: true})
-
     expect(wrapper.find('#login')).to.have.length(1)
+  })
+
+  it('does not show the login component when clicked is false', () => {
+    wrapper.setState({clicked: false})
+    expect(wrapper.find('#login')).to.have.length(0)
   })
 
   it('gets prop.currentUser from state.auth', () => {
@@ -41,9 +45,6 @@ describe('<Navbar />', () => {
 
     expect(wrapper1.find(Navbar)).to.have.prop('currentUser').eql(state.auth)
   })
-
-  //check that the props passed off the store state works
-
 
 })
 
