@@ -21,15 +21,15 @@ const reducer = (state = initialState, action) => {
    switch (action.type) {
 
       case SELECTED_ORDER:
-      newState.selectedUser = action.order
+      newState.selectedOrder = action.order
       break
 
       case CREATED_ORDER:
-      newState.users = [action.order, ...state.orders]
+      newState.orders = [action.order, ...state.orders]
       break
 
       case ALL_ORDERS:
-      newState.users = action.orders
+      newState.orders = action.orders
       break
 
       default:
