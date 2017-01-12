@@ -45,7 +45,7 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
-        {/*<IndexRedirect to="/jokes" />*/}
+        <IndexRedirect to="/products" />
         {/*<Route path="/jokes" component={Jokes} />*/}
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />

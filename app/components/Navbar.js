@@ -29,22 +29,14 @@ export class Navbar extends React.Component {
       <nav>
         <div className="container">
           <div className="nav-left">
-            <div className="navbar-logo">
+              <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
 
-              <Link className="navbar-brand" to="/"><img src="/logo-test.png" /></Link>
-            </div>
-            <div>
-              <ul>
-                <li>
-                  <Link to="/products" activeClassName="active">Products</Link>
-                </li>
-                <li>
-                  <Link to="/cart" className="cart-icon"><img src="/cart.png" /></Link>
-                </li>
-              </ul>
-            </div>
+              <Link to="/products" className="nav-margins" activeClassName="active">Products</Link>
           </div>
+          <div className="nav-right">
+              <Link to="/cart" className="nav-margins"><img src="/cart.png" /></Link>
               { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
+          </div>
         </div>
       </nav>
     )
@@ -52,18 +44,13 @@ export class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-      <div className="nav-right">
-        <ul className="login-signup">
-          <li>
-           <Link to="/signup" activeClassName="active">signup</Link>
-          </li>
-          <li>
-            <Link to="#" activeClassName="active" onClick={this.handleClick}>login</Link>
+      <div>
+        <Link to="/signup" className="nav-margins" activeClassName="active">signup</Link>
+
+        <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>
 
               {this.state.clicked && <div id="login"><Login /></div>}
 
-          </li>
-        </ul>
       </div>
     )
   }
@@ -72,19 +59,16 @@ export class Navbar extends React.Component {
     const name = this.props.currentUser.name || this.props.currentUser.email;
     const userId = this.props.currentUser.id;
     return (
-      <div className="nav-right">
-        <ul className="logged-in">
-          <li>
-            <Link to={`/user/${userId}`} activeClassName="active">My Account</Link>
-          </li>
-          <li>
-          <button
-            className="log-out-btn"
-            onClick={this.props.logout}>
-            logout {name}
-          </button>
-          </li>
-        </ul>
+      <div>
+
+        <Link to={`/user/${userId}`} className="nav-margins" activeClassName="active">My Account</Link>
+
+        <button
+          className="log-out-btn nav-margins"
+          onClick={this.props.logout}>
+          logout {name}
+        </button>
+
       </div>
     )
   }

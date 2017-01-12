@@ -5,24 +5,26 @@ nav {
   position: fixed;
   top: 0;
   align-items: center; }
-
-ul {
-  list-style: none;
-  padding: 0px; }
+  nav .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
 
 .nav-left {
-  width: 40%;
   display: flex;
   justify-content: flex-start;
-  align-self: flex-start;
-  margin: 0px; }
+  align-items: center;
+  flex-direction: row; }
 
 .nav-right {
-  width: 40%;
   display: flex;
   justify-content: flex-end;
-  align-self: flex-end;
-  margin: 0px; }
+  align-items: center;
+  flex-direction: row; }
+
+.nav-margins {
+  margin-left: 10px;
+  margin-right: 10px; }
 
 /*navbar-logo
 navbar-brand
