@@ -28,6 +28,11 @@ const Product = db.define('products', {
   thumbnail: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  inventory: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate: { min: 0 }
   }
 }, {
   instanceMethods: {
