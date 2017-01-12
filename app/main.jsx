@@ -10,6 +10,9 @@ import Jokes from './components/Jokes'
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
+import Products from './components/Products'
+
+import { receiveAllProducts } from './reducers/products'
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -34,6 +37,10 @@ const onUserpageEnter = (nextRouterState) => {
   store.dispatch(selectUser(userId))
 }
 
+const onProductsEnter =(nextRouterState) => {
+  store.dispatch(receiveAllProducts())
+}
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -42,6 +49,7 @@ render (
         <Route path="/jokes" component={Jokes} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
+        <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/success" component={Success} />
       </Route>
     </Router>
