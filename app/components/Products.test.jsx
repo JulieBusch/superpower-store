@@ -58,15 +58,13 @@ describe('<Products /> Connection', () => {
   let root, store
   beforeEach('render the root', () => {
     store = createStore(state => state, state)
-    //console.log("store", store, "state", store.getState());
     root = shallow(<ProductsContainer store={store}/>)
-    //console.log(root);
   })
 
   it('shows a superpower', () => {
-    expect(root.find(Products)).to.have.prop('products').eql(state.products.products)
-    //expect(root.find('p').text()).equal(`Price: $${superpower.price}`)
-    //expect(root.find('img')).to.have.length(1)
+    expect(root.find(Products))
+      .to.have.prop('products')
+      .eql(state.products.products)
   })
 
 })
