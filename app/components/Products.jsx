@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => {
-	return { products: state.products.products }
+  return { products: state.products.products }
 }
 
 
@@ -12,7 +12,7 @@ export class Products extends Component {
     super(props)
   }
 
-	render() {
+  render() {
 
     const productDivs = this.props.products.map(function(product) {
       return (
@@ -24,11 +24,11 @@ export class Products extends Component {
       )
     });
 
-		return(
-			<div>
-				{productDivs}
-			</div>
-			)
+    return(
+	   <div>
+		  {productDivs}
+	   </div>
+		)
 	}
 }
 
