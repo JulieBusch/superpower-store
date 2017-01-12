@@ -49,11 +49,8 @@ render (
         <Route path="/jokes" component={Jokes} />
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
-<<<<<<< HEAD
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
-=======
         <Route path="/success" component={Success} />
->>>>>>> f408edc48817e529760a13e38ae8accbde68f9dc
       </Route>
     </Router>
   </Provider>,
