@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
+import Splash from './components/Splash'
 
 import { receiveAllProducts } from './reducers/products'
 import Success from './components/Success'
@@ -23,7 +24,7 @@ const ExampleApp = connect(
 ) (
   ({ user, children }) =>
     <div>
-      <Navbar/>
+      <Navbar />
       {children}
     </div>
 )

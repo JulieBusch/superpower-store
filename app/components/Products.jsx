@@ -37,26 +37,18 @@ export class Products extends Component {
 
   render() {
 
-    const productDivs = this.splitIntoRows(this.props.products)
-      .map(function(productArr, idx) {
-        var divs = productArr.forEach(function(product) {
+    var productDivs = this.props.products.map(function(product) {
           return(
             <div key={product.id} className="column-3">
               <h4>{product.name}</h4>
-              <img src={product.thumbnail} />
+              <div><img src={product.thumbnail} /></div>
               <p>Price: ${product.price}</p>
             </div>
           )
-        })
-        return (
-          <div key={idx} className="row">
-            {divs}
-          </div>
-        )
       });
 
     return(
-	   <div className="container">
+	   <div className="container catalog">
 		  {productDivs}
 	   </div>
 		)
