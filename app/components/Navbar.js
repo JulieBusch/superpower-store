@@ -31,10 +31,10 @@ export class Navbar extends React.Component {
           <div className="nav-left">
               <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
 
-              <Link to="/products" className="nav-margins" activeClassName="active">Products</Link>
+              <Link to="/products" className="nav-margins" >Products</Link>
           </div>
           <div className="nav-right">
-              <Link to="/cart" className="nav-margins"><img src="/cart.png" /></Link>
+              <Link to="/cart" className="nav-margins">cart</Link>
               { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
           </div>
         </div>
