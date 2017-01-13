@@ -26,7 +26,7 @@ const Orderline = db.define('orderlines', {
     }
   },
   hooks: {
-    beforeValidate: function(orderlines) {
+    beforeSave: function(orderlines) {
       return Product.findById(orderlines.product_id)
       .then((foundProduct) => {
         orderlines.itemPrice = foundProduct.price

@@ -5,6 +5,7 @@ const router = require('express').Router();
 const Product = db.model('products');
 
 router.get('/', function(req, res, next) {
+  console.log(req.user)
   Product.findAll()
   .then(products => res.send(products))
   .catch(next);
@@ -23,6 +24,9 @@ router.get('/:productId', function(req, res, next) {
   .catch(next);
 });
 
+// router.post('/:productId', function(req, res, next) {
 
+//   order.addProduct(prod1, { through: { quantity: 2 } })
+// })
 
 module.exports = router;
