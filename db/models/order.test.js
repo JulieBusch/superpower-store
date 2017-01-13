@@ -39,10 +39,13 @@ describe('Backend orders tests', () => {
       })
 
       let whatever;
+      let laser, flight;
 
       Promise.all([prod1, prod2])
-      .then(() => {
 
+      .then(([prod1, prod2]) => {
+        laser = prod2;
+        flight = prod1;
         return Order.create({})
 
       })
@@ -51,15 +54,15 @@ describe('Backend orders tests', () => {
         whatever = o
 
         const orderline1 = Orderline.create({
-          order_id: 1,
-          product_id: 3,
+          order_id: o.id,
+          product_id: flight.id,
           quantity: 3,
           //itemPrice: 3.00
          })
 
         const orderline2 = Orderline.create({
-          order_id: 1,
-          product_id: 4,
+          order_id: o.id,
+          product_id: laser.id,
           quantity: 3,
           //itemPrice: 3.00
          })
