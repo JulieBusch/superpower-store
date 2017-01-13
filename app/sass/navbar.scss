@@ -1,0 +1,50 @@
+nav {
+  display: flex;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  align-items: center;
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+}
+
+.nav-margins {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.log-out-btn {
+
+}
+
+a {
+  text-decoration: none;
+
+}
+
+/*navbar-logo
+navbar-brand
+cart-icon
+login-signup
+logged-in
+log-out-btn*/

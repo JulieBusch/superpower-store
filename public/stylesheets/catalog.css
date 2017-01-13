@@ -1,0 +1,23 @@
+.splash {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/splash.jpg");
+  background-position: 0 -1200px;
+  background-size: cover; }
+  .splash span {
+    text-align: center;
+    color: white;
+    font-size: 50px; }
+
+.catalog {
+  justify-content: space-between;
+  margin-top: 100px; }
+
+.catalog-tile {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+.product-thumbnail img {
+  border-radius: 50%; }

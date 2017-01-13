@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import Splash from './Splash'
 
 const mapStateToProps = (state) => {
   return { products: state.products.products }
@@ -14,20 +15,22 @@ export class Products extends Component {
 
   render() {
 
-    const productDivs = this.props.products.map(function(product) {
-      return (
-        <div key={product.id}>
-          <h4>{product.name}</h4>
-          <img src={product.thumbnail} />
-          <p>Price: ${product.price}</p>
-        </div>
-      )
-    });
+    var productDivs = this.props.products.map(function(product) {
+          return(
+            <div key={product.id} className="column-3 catalog-tile">
+              <h4>{product.name}</h4>
+              <div className="product-thumbnail"><img src={product.thumbnail} /></div>
+            </div>
+          )
+      });
 
     return(
-	   <div>
-		  {productDivs}
-	   </div>
+      <div>
+        <Splash />
+  	    <div className="container catalog">
+  		    {productDivs}
+  	    </div>
+      </div>
 		)
 	}
 }
