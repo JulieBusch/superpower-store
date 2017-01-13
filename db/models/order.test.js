@@ -9,8 +9,9 @@ const {expect} = require('chai')
 
 describe('Backend orders tests', () => {
 
-  beforeEach('wait for the db', () => db.didSync)
+  before('wait for the db', () => db.didSync.then(() => db.sync({force: true})))
 
+ 
   describe('Order Model', () => {
 
     // 'status' is a column in this model
@@ -20,7 +21,7 @@ describe('Backend orders tests', () => {
 
     it('has a method that calculates total', function () {
 
-      const prod1 = Product.create({
+      Product.create({
         name: 'Flight',
         image:'hjkhk',
         description: 'hkjdhkjh',
@@ -28,67 +29,42 @@ describe('Backend orders tests', () => {
         tags: ["cool", "awesome"],
         thumbnail: 'hjkhk'
       })
-
-      const prod2 = Product.create({
+      .then(() => {return Product.create({
         name: 'Laser Vision',
         image:'hjkhk',
         description: 'hkjdhkjh',
-        price: 22.00,
+        price: 15.05,
         tags: ["dangerous", "awesome"],
-        thumbnail: 'hjkhk'
-      })
-
-      let whatever;
-      let laser, flight;
-
-      Promise.all([prod1, prod2])
-
-      .then(([prod1, prod2]) => {
-        laser = prod2;
-        flight = prod1;
-        return Order.create({})
-
-      })
+        thumbnail: 'hjkhk'      
+      })})
+      .then(() => {return Order.create({})})
       .then((o) => {
-
-        whatever = o
-
-        const orderline1 = Orderline.create({
+        return Promise.all([
+          Orderline.create({
           order_id: o.id,
-          product_id: flight.id,
+          product_id: 1,
           quantity: 3,
-          //itemPrice: 3.00
-         })
+          }), 
 
-        const orderline2 = Orderline.create({
-          order_id: o.id,
-          product_id: laser.id,
-          quantity: 3,
-          //itemPrice: 3.00
-         })
-
-        return Promise.all([orderline1, orderline2])
+          Orderline.create({
+            order_id: o.id,
+            product_id: 2,
+            quantity: 3,
+           })
+        ])
+        .then(() => {
+          return Order.findById(o.id)
+        })
       })
-      .then( () => {
-        console.log(whatever)
-        expect(whatever.total).to.equal(105.09)
-      })
-      .catch((err) => console.log(err))
+      .then( o => {
+        console.log("HERE IS O", o)
+        expect(o.total).to.equal('105.09')
 
-    //   .then(() => {return Orderline.create({
-    //     order_id: 1,
-    //     product_id: 1,
-    //     quantity: 3,
-    //     //itemPrice: 3.00
-    //    })
-    //   })
-    //   .then(() => {Order.create({})})
-    //   .then(newOl => {
-    //     expect(newOl.itemPrice).to.equal('13.03')
-    //     expect(newOl.subtotal).to.equal(39.09)
-    //   })
+      })
+      .catch(err => console.error(err))
+    });    
     })
 
   })
 
-})
+//})

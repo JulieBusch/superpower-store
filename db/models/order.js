@@ -11,32 +11,37 @@ const Order = db.define('orders', {
                          'open',
                          'recieved',
                          'shipping',
-                         'completed')
+                         'completed'),
+  total: Sequelize.DECIMAL(10, 2)
 },{
-  getterMethods: {
-    total: function() {
-      return 105.09
-      // // return Orderline.findAll({
-      // //   where: {
-      // //     order_id: this.id
-      // //   }
-      // })
-      // // .then(foundOrderlines => {
-      // //   // console.log(foundOrderlines)
-      // //   return foundOrderlines.map(function(ol){
-      // //     return ol.subtotal
-      // //   })
-      // // })
-      // // .then(subtotals => {
-      // //   // console.log('subtotals :', subtotals)
-      // //   console.log([1, 3, 4].reduce(function(a, b) {
-      // //     return a + b
-      // //   }))
-      // //   return subtotals.reduce(function(a, b) {
-      // //     return a + b
-      // //   })
-      // })
-    }
+  hooks: {
+    beforeSave: function(order) {
+    //   order.total = 105.09
+    //console.log("orderId", order.id)
+      return Orderline.findAll({
+        where: {
+          order_id: order.id
+        }
+      })
+      .then(foundOrderlines => {
+        console.log("foundOrderlines", foundOrderlines)
+        let subtotalTest = foundOrderlines.map(function(ol){
+          return ol.subtotal
+        })
+        //console.log("subtotal test", subtotalTest)
+        return subtotalTest
+      })
+      .then(subtotals => {
+        let total = subtotals.reduce(function(a, b) {
+          return a + b
+        }, 0)
+        //console.log("total", total)
+        return order.update({
+          total: total
+        })
+        //console.log("order.total", order.total)
+      })
+     }
   }
 })
 
