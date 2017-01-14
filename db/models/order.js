@@ -28,7 +28,7 @@ const Order = db.define('orders', {
         let subtotalTest = foundOrderlines.map(function(ol){
           return ol.subtotal
         })
-        //console.log("subtotal test", subtotalTest)
+        console.log("subtotal test", subtotalTest)
         return subtotalTest
       })
       .then(subtotals => {

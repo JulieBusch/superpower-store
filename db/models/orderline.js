@@ -26,14 +26,22 @@ const Orderline = db.define('orderlines', {
     }
   },
   hooks: {
-    beforeSave: function(orderlines) {
+    beforeValidate: function(orderlines) {
       return Product.findById(orderlines.product_id)
       .then((foundProduct) => {
         orderlines.itemPrice = foundProduct.price
         return orderlines
       })
       .catch(err => console.log('ERRRR ', err))
-    }
+    },
+    // afterUpdate: function(orderlines) {
+    //   return Product.findById(orderlines.product_id)
+    //   .then((foundProduct) => {
+    //     orderlines.itemPrice = foundProduct.price
+    //     return orderlines
+    //   })
+    //   .catch(err => console.log('error ', err))
+    // }
   }
 })
 
