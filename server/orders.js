@@ -3,15 +3,28 @@
 const db = require('APP/db');
 const router = require('express').Router();
 const Order = db.model('orders');
+const Product = db.model('products')
+
+const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 
-router.param('/:orderId', function(req, res, next, id) {
-  Order.findById(req.params.orderId)
+router.param('orderId', function(req, res, next, orderId) {
+  Order.findById(orderId)
   .then(foundOrder => {
     req.order = foundOrder
-  })
+    next()
+   })
+  .catch(next)
 })
 
+router.param('productId', function(req, res, next, productId) {
+  Product.findById(productId)
+  .then(foundProduct => {
+    req.product = foundProduct
+    next()
+  })
+  .catch(next)
+})
 
 // for ADMIN ONLY
 router.get('/', function(req, res, next) {
@@ -20,16 +33,21 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
+
+// find individual order
 router.get('/:orderId', function(req, res, next) {
-  Order.findById(req.params.orderId)
-  .then(order => {
-    console.log('total: ', order.total)
-    res.send(order)
-  })
+  res.send(req.order)
   .catch(next);
 });
 
-// find order by userId
+// find individual order's products (and orderlines)
+router.get('/:orderId/orderline/', function(req, res, next) {
+  req.order.getProducts()
+  .then(result => res.send(result))
+  .catch(next)
+})
+
+// find open order by userId
 router.get('/user/:userId', function(req, res, next) {
   Order.findOne({where: {
     user_id: req.params.userId,
@@ -56,33 +74,43 @@ router.post('/', function(req, res, next) {
 })
 
 // add item to order
-router.get('/:orderId/product/:productId', function(req, res, next) {
-  Order.findById(req.params.orderId)
-  .then(foundOrder => foundOrder.getProducts())
-  .then( (products) => {
-    var match = products.filter((product) => {
-      return product.id === req.params.productId
+router.put('/:orderId/product/:productId', function(req, res, next) {
+  req.order.getProducts()
+  .then( products => {
+    var match = products.filter(product => {
+      return product.id === Number(req.params.productId)
     })
+    console.log('MATCH ', match)
+    // if product already exists in order
     if (match.length) {
-
+      req.order.addProduct(req.product, { through: { quantity: 6 }})
+      //req.product.orderlines.update({quantity: 5})
+      .then(product => res.send(product))
+      .catch(next)
     } else {
 
+      req.order.addProduct(req.product, { through: { quantity: 3 }})
+      .then(product => res.send(product))
+      .catch(next)
     }
-  })
-
-
-
-    {
-      product_id: req.params.productId
-    }
-  })
-  .then(foundOrderLines => {
-    console.log(foundOrderLines)
-    res.send(foundOrderLines)
   })
   .catch(next)
-
 })
+
+//   .then( (products) => {
+//     var match = products.filter((product) => {
+//       return product.id === req.params.productId
+//     })
+//     if (match.length) {
+
+//     } else {
+
+//     }
+//   })
+
+
+
+// })
 
 // update item in order
 

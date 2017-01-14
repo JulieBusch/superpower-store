@@ -10,8 +10,8 @@ const Product = require('./product')
 
 const Orderline = db.define('orderlines', {
   quantity: {
-    type: Sequelize.INTEGER,
-    defaultValue: 1,
+    type: Sequelize.INTEGER
+    //defaultValue: 1,
   },
   itemPrice: {
     type: Sequelize.STRING
