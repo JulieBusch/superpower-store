@@ -9,6 +9,7 @@ const Orderline = db.model('orderlines')
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 
+// sets order to req.order
 router.param('orderId', function(req, res, next, orderId) {
   Order.findById(orderId)
   .then(foundOrder => {
@@ -18,24 +19,23 @@ router.param('orderId', function(req, res, next, orderId) {
   .catch(next)
 })
 
-// finds product by id,
+// sets product to req.product
 router.param('productId', function(req, res, next, productId) {
   Product.findById(productId)
   .then(foundProduct => {
-  //console.log(foundProductObj)
     req.product = foundProduct
     next()
   })
   .catch(next)
 })
 
-// for ADMIN ONLY
+
+// for ADMIN ONLY, get all orders
 router.get('/', function(req, res, next) {
   Order.findAll()
   .then(Orders => res.send(Orders))
   .catch(next);
 });
-
 
 // find individual order
 router.get('/:orderId', function(req, res, next) {
@@ -63,7 +63,7 @@ router.get('/user/:userId', function(req, res, next) {
   .catch(next)
 })
 
-// make new order
+// create new order
 router.post('/', function(req, res, next) {
   Order.create({
     status: 'open',
@@ -76,14 +76,12 @@ router.post('/', function(req, res, next) {
   .catch(next);
 })
 
-
 // change status of order
 router.put('/:orderId', function(req, res, next) {
   req.order.update(req.body)
   .then(updatedOrder => res.send(updatedOrder))
   .catch(next);
 });
-
 
 // add/update item to order
 router.put('/:orderId/product/:productId', function(req, res, next) {
@@ -108,7 +106,6 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
   .catch(next)
 })
 
-
 // remove item from order
 router.delete('/:orderId/product/:productId', function(req, res, next) {
   req.order.removeProduct(req.product)
@@ -116,9 +113,6 @@ router.delete('/:orderId/product/:productId', function(req, res, next) {
     res.sendStatus(200)
   })
 })
-
-
-
 
 
 
