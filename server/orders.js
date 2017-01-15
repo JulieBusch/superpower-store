@@ -9,7 +9,7 @@ const Orderline = db.model('orderlines')
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 
-// sets order to req.order
+// handles orderId param, sets order to req.order
 router.param('orderId', function(req, res, next, orderId) {
   Order.findById(orderId)
   .then(foundOrder => {
@@ -19,7 +19,7 @@ router.param('orderId', function(req, res, next, orderId) {
   .catch(next)
 })
 
-// sets product to req.product
+// handles productId param, sets product to req.product
 router.param('productId', function(req, res, next, productId) {
   Product.findById(productId)
   .then(foundProduct => {
@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
-// find individual order
+// find individual order by id
 router.get('/:orderId', function(req, res, next) {
   res.send(req.order)
   .catch(next);
@@ -76,12 +76,21 @@ router.post('/', function(req, res, next) {
   .catch(next);
 })
 
+// add user to an existing order
+router.put('/:orderId/setuser/:userId', function(req, res, next) {
+  req.order.setUser(req.params.userId)
+  .then(updatedOrder => res.send(updatedOrder))
+  .catch(next)
+})
+
+
 // change status of order
 router.put('/:orderId', function(req, res, next) {
   req.order.update(req.body)
   .then(updatedOrder => res.send(updatedOrder))
   .catch(next);
 });
+
 
 // add/update item to order
 router.put('/:orderId/product/:productId', function(req, res, next) {

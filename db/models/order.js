@@ -16,32 +16,35 @@ const Order = db.define('orders', {
 },{
   hooks: {
     beforeSave: function(order) {
-    //   order.total = 105.09
-    //console.log("orderId", order.id)
-      return Orderline.findAll({
-        where: {
-          order_id: order.id
-        }
-      })
-      .then(foundOrderlines => {
-        console.log("foundOrderlines", foundOrderlines)
-        let subtotalTest = foundOrderlines.map(function(ol){
-          return ol.subtotal
-        })
-        console.log("subtotal test", subtotalTest)
-        return subtotalTest
-      })
-      .then(subtotals => {
-        let total = subtotals.reduce(function(a, b) {
-          return a + b
+      order.getProducts()
+      .then( orderProducts => {
+        let newTotal = orderProducts.reduce((a, b) => {
+          return a.orderlines.subtotal + b.orderlines.subtotal
         }, 0)
-        //console.log("total", total)
-        return order.update({
-          total: total
-        })
-        //console.log("order.total", order.total)
+        order.update({ total: newTotal })
       })
-     }
+      .catch(err => console.log(err))
+    }
+
+    //   return Orderline.findAll({
+    //     where: {
+    //       order_id: order.id
+    //     }
+    //   })
+    //   .then(foundOrderlines => {
+    //     let subtotalTest = foundOrderlines.map(function(ol){
+    //       return ol.subtotal
+    //     })
+    //     return subtotalTest
+    //   })
+    //   .then(subtotals => {
+    //     let total = subtotals.reduce(function(a, b) {
+    //       return a + b
+    //     }, 0)
+    //     return order.update({
+    //       total: total
+    //     })
+
   }
 })
 
