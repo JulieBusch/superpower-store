@@ -37,28 +37,40 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
-// find individual order by id
+// find an order by id
 router.get('/:orderId', function(req, res, next) {
   res.send(req.order)
   .catch(next);
 });
 
-// find individual order's products (and orderlines)
-router.get('/:orderId/orderline/', function(req, res, next) {
+// find an order's products (and orderlines)
+router.get('/:orderId/orderline', function(req, res, next) {
   req.order.getProducts()
   .then(result => res.send(result))
   .catch(next)
 })
 
-// find open order by userId
-router.get('/user/:userId', function(req, res, next) {
+// find an open order by userId
+router.get('/user/:userId/open', function(req, res, next) {
   Order.findOne({where: {
     user_id: req.params.userId,
     status: 'open'
   }})
   .then((foundOrder) => {
-    if(foundOrder) { res.send(foundOrder) }
+    if (foundOrder) { res.send(foundOrder) }
     else { res.send("Your shopping cart is empty!")}
+  })
+  .catch(next)
+})
+
+// find all user's orders by userId
+router.get('/user/:userId', function(req, res, next) {
+  Order.findAll({where: {
+    user_id: req.params.userId
+  }})
+  .then( (foundOrders) => {
+    if (foundOrders) { res.send(foundOrders) }
+    else { res.send("No Orders Found!")}
   })
   .catch(next)
 })
