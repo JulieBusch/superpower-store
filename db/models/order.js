@@ -15,16 +15,18 @@ const Order = db.define('orders', {
   total: Sequelize.DECIMAL(10, 2)
 },{
   hooks: {
-    beforeSave: function(order) {
+    beforeUpdate: function(order) {
+      //order.total = 33.33
       order.getProducts()
       .then( orderProducts => {
         let newTotal = orderProducts.reduce((a, b) => {
-          return a.orderlines.subtotal + b.orderlines.subtotal
-        }, 0)
-        order.update({ total: newTotal })
+          return a + b.orderlines.subtotal
+         }, 0)
+        return order.update({ total: newTotal })
       })
       .catch(err => console.log(err))
     }
+
 
     //   return Orderline.findAll({
     //     where: {
@@ -44,6 +46,8 @@ const Order = db.define('orders', {
     //     return order.update({
     //       total: total
     //     })
+    //   })
+    //   .catch(err => console.log(err))
 
   }
 })

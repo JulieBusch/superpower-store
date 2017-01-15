@@ -24,9 +24,16 @@ router.get('/:productId', function(req, res, next) {
   .catch(next);
 });
 
-// router.post('/:productId', function(req, res, next) {
 
-//   order.addProduct(prod1, { through: { quantity: 2 } })
+
+//admin only, alter product price
+// router.put('/:productId/price/:price', function(req, res, next) {
+//   Product.findById(req.params.productId)
+//   .then(product => {
+//     product.update({ price: req.params.price })
+//   })
+//   .then(updatedProduct => res.send(updatedProduct))
+//   .catch(next)
 // })
 
 module.exports = router;

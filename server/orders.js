@@ -111,20 +111,27 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
   })
   .then( foundProduct => {
     // if product already exists in order
-    console.log(req.product)
      if (foundProduct.length) {
-      req.order.addProduct(req.product, { quantity:
-        foundProduct[0].orderlines.quantity + 1
+      return req.order.addProduct(req.product, {
+        quantity: foundProduct[0].orderlines.quantity + 1
+      })
+      .then(() => {
+        return req.order.save()
       })
       .then(result => res.send(result))
       .catch(next)
     } else {
-      req.order.addProduct(req.product, { quantity: 1 })
+      return req.order.addProduct(req.product, {
+        itemPrice: req.product.price,
+        quantity: 1
+      })
+      .then(() => {
+        return req.order.save()
+      })
       .then(result => res.send(result))
-     .catch(next)
+      .catch(next)
     }
   })
-  .catch(next)
 })
 
 // remove item from order

@@ -10,8 +10,8 @@ const Product = require('./product')
 
 const Orderline = db.define('orderlines', {
   quantity: {
-    type: Sequelize.INTEGER
-    //defaultValue: 1,
+    type: Sequelize.INTEGER,
+    defaultValue: 1,
   },
   itemPrice: {
     type: Sequelize.STRING
@@ -25,24 +25,16 @@ const Orderline = db.define('orderlines', {
       } else return '';
     }
   },
-  hooks: {
-    beforeValidate: function(orderlines) {
-      return Product.findById(orderlines.product_id)
-      .then((foundProduct) => {
-        orderlines.itemPrice = foundProduct.price
-        return orderlines
-      })
-      .catch(err => console.log('ERRRR ', err))
-    },
-    // afterUpdate: function(orderlines) {
-    //   return Product.findById(orderlines.product_id)
-    //   .then((foundProduct) => {
-    //     orderlines.itemPrice = foundProduct.price
-    //     return orderlines
-    //   })
-    //   .catch(err => console.log('error ', err))
-    // }
-  }
+  // hooks: {
+  //   afterUpdate: function(orderlines) {
+  //     return Product.findById(orderlines.product_id)
+  //     .then((foundProduct) => {
+  //       orderlines.itemPrice = foundProduct.price
+  //       return orderlines
+  //     })
+  //     .catch(err => console.log('ERRRR ', err))
+  //   },
+  // }
 })
 
 module.exports = Orderline
