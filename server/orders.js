@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
 // find an order by id
 router.get('/:orderId', function(req, res, next) {
   res.send(req.order)
-  .catch(next);
+  //.catch(next);
 });
 
 // find an order's products (and orderlines)
