@@ -178,7 +178,7 @@ const reviewsArr = [
     rating: 5,
     text: "I had no problems with temperature or oxygen while flying. I got the Flight/Super Speed combo and had a blast!",
     user_id: 2,
-    productId: 1
+    product_id: 1
   },
   {
     rating: 2,

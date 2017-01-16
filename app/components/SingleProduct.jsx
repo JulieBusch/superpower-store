@@ -26,7 +26,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     var selectedProduct = this.props.selectedProduct
-
+    console.log("PRAAAAAAAAAHHHHPS ", this.props)
     return(
       <div className="popUp">
         <div className="column-2">
