@@ -16,25 +16,33 @@ const Orderline = db.define('orderlines', {
   itemPrice: {
     type: Sequelize.DECIMAL(10, 2)
   },
-},{
-  // getterMethods: {
-  //   subtotal: function() {
-  //     if (this.itemPrice) {
-  //       const result = +this.itemPrice * this.quantity
-  //       return parseFloat(result.toFixed(2));
-  //     } else return '';
-  //   }
-  // },
-  hooks: {
-    beforeCreate: function(orderlines) {
-      return Product.findById(orderlines.product_id)
-      .then((foundProduct) => {
-        orderlines.itemPrice = foundProduct.price
-        return orderlines
-      })
-      .catch(err => console.log('ERRRR ', err))
-    },
+  subtotal: {
+    type: Sequelize.DECIMAL(10, 2),
+    defaultValue: 0.00
   }
+},{
+  hook: {
+    afterSave: function(orderLine) {
+      orderLine.subtotal += 100
+      // if (orderLine.itemPrice) {
+      //   const result = +orderLine.itemPrice * orderLine.quantity
+      //   orderLine.subtotal = parseFloat(result.toFixed(2));
+      // } 
+      //else return;
+    }
+  },
+  // hooks: {
+  //   beforeCreate: function(orderlines) {
+  //     console.log("Helllooooo")
+  //     return Product.findById(orderlines.product_id)
+  //     .then((foundProduct) => {
+  //       console.log("FOUND PRODUCT", foundProduct)
+  //       orderlines.itemPrice = foundProduct.price
+  //       return orderlines
+  //     })
+  //     .catch(err => console.log('ERRRR ', err))
+  //   },
+  //}
 })
 
 module.exports = Orderline

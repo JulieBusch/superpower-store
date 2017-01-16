@@ -32,6 +32,10 @@ const reducer = (state = initialState, action) => {
       newState.orders = action.orders
       break
 
+      case UPDATED_ORDER:
+      newState.selectedOrder = action.order
+      break
+
       default:
       return state
 
@@ -53,6 +57,14 @@ export const createdOrder = order => ({
 
 export const allOrders = orders => ({
    type: ALL_ORDERS, orders
+})
+
+export const updatedOrderStatus = order => ({
+   type: UPDATED_ORDER, order
+})
+
+export const updateOrderProducts = order => ({
+   type: UPDATED_ORDER, order
 })
 
 /* ------------       DISPATCHERS     ------------------ */
@@ -80,5 +92,18 @@ export const getAllOrders = () =>
          .then(foundOrders => dispatch(allOrders(foundOrders)))
          .catch(failed => console.log(failed))
 
+export const updateOrderStatus = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${orderId}`, order)
+         .then(res => res.data)
+         .then(updatedOrder) => dispatch(updatedOrderStatus(updatedOrder))
+         .catch((failed) => console.log(failed))
+
+export const updatedOrder = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${orderId}/product/${productId}`)
+         .then(res => res.data)
+         .then(updatedOrder) => dispatch(updatedOrderProducts(updatedOrder))
+         .catch((failed) => console.log(failed))
 
 export default reducer

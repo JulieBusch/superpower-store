@@ -22,6 +22,7 @@ const Order = db.define('orders', {
         let newTotal = orderProducts.reduce((a, b) => {
           return a + b.orderlines.subtotal
          }, 0)
+        //console.log(newTotal);
         return order.update({ total: newTotal })
       })
       .catch(err => console.log(err))
