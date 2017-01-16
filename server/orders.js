@@ -106,6 +106,14 @@ router.put('/:orderId', function(req, res, next) {
 
 // add/update item to order
 router.put('/:orderId/product/:productId', function(req, res, next) {
+  // Maybe try this?
+  //
+  // const {productId, orderId, quantity} = req.params
+  // Orderline.findOrCreate({where: {productId, orderId}})
+  //   .then(line => line.increment('quantity', {by: quantity}))
+  //   .then(() => Order.findById(orderId))
+  //   .then(order => res.send(order))
+
   req.order.getProducts({
     where: { id: req.product.id }
   })
@@ -113,6 +121,7 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
     // if product already exists in order
      if (foundProduct.length) {
       return req.order.addProduct(req.product, {
+        // Classic race condition; kindof low priority tho ~ ak
         quantity: foundProduct[0].orderlines.quantity + 1
       })
     } else {
@@ -123,6 +132,7 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
     }
   })
   .then(() => {
+    // Unneeded (I think)
     return req.order.save()
   })
   .then(result => res.send(result))

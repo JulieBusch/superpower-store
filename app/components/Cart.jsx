@@ -68,6 +68,11 @@ const mapStateToProps = (state) => {
   })
 }
 
+// Suggestion:
+// const mapStateToProps =
+//   ({ selectedUser, order, orderDetails }) =>
+//   ({ selectedUser, order, orderDetails })
+
 const mapDispatchToProps = () => {
   return ({})
   // return

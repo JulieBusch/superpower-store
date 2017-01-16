@@ -14,17 +14,25 @@ const Order = db.define('orders', {
                          'completed'),
   total: Sequelize.DECIMAL(10, 2)
 },{
+  // Maybe alternative?
+  //
+  // instanceMethods: {
+  //   getTotal() {
+  //     return this.getOrderItems()
+  //       //.then(items => items.reduce((total, {price, qty}) => ... ))
+  //   }
+  // },
   hooks: {
     beforeUpdate: function(order) {
       //order.total = 33.33
-      order.getProducts()
-      .then( orderProducts => {
-        let newTotal = orderProducts.reduce((a, b) => {
-          return a + b.orderlines.subtotal
-         }, 0)
-        return order.update({ total: newTotal })
-      })
-      .catch(err => console.log(err))
+      return order.getProducts()
+        .then( orderProducts => {
+          let newTotal = orderProducts.reduce((a, b) => {
+            return a + b.orderlines.subtotal
+          }, 0)
+          return order.update({ total: newTotal })
+        })
+        .catch(err => console.log(err))
     }
 
 
