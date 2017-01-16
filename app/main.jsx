@@ -47,6 +47,7 @@ const onProductsEnter =(nextRouterState) => {
 const onCartEnter = (nextRouterState) => {
   // fill this out with proper dispatcher that gets everything from cart in order model
   //store.dispatch(receiveWorkingOrder())
+}
 
 const onSingleItemEnter = (nextRouterState) => {
   const productId = nextRouterState.params.id;
