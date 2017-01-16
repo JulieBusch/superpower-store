@@ -39,20 +39,25 @@ class Cart extends React.Component {
     // })
 
     return (
-      <div className="container">
+      <div className="container cart">
         <h1> Your Cart </h1>
         {
         //orderDivs
         }
-        ORDERS ARE GOING HERE
+        <h2> ORDERS ARE GOING HERE </h2>
+
         <div>
           Total: {/*this.total(this.props.order)*/}
         </div>
+
         <div>
+
           <Link to="/checkout">
-          Checkout
+            <btn>Checkout</btn>
           </Link>
+
         </div>
+
       </div>
     )
   }
