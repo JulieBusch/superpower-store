@@ -22,7 +22,6 @@ describe('<Navbar />', () => {
     expect(wrapper.find('.login-signup')).be.present()
   })
 
-
   it('shows the login component when login link is clicked', () => {
     wrapper.setState({clicked: true})
     expect(wrapper.find('#login')).to.have.length(1)
