@@ -12,6 +12,7 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 
+
 import { receiveAllProducts } from './reducers/products'
 import Success from './components/Success'
 
@@ -23,7 +24,8 @@ const ExampleApp = connect(
 ) (
   ({ user, children }) =>
     <div>
-      <Navbar/>
+      <Navbar />
+
       {children}
     </div>
 )
@@ -45,8 +47,8 @@ render (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
-        <IndexRedirect to="/jokes" />
-        <Route path="/jokes" component={Jokes} />
+        <IndexRedirect to="/products" />
+        {/*<Route path="/jokes" component={Jokes} />*/}
         <Route path="/signup" component={SignUp} />
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} />

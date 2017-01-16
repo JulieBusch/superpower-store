@@ -26,22 +26,16 @@ export class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav>
         <div className="container">
-          <div className="navbar-header">
+          <div className="nav-left">
+              <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
 
-            <Link className="navbar-brand" to="/"><img src="/logo-test.png" /></Link>
+              <Link to="/products" className="nav-margins" >Products</Link>
           </div>
-          <div className="collapse navbar-collapse">
-            <ul className="nav navbar-nav">
-              <li>
-                <Link to="/catalog" activeClassName="active">catalog</Link>
-              </li>
-              <li>
-                <Link to="/cart" className="navbar-icon"><img src="/cart.png" /></Link>
-              </li>
-            </ul>
-            { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
+          <div className="nav-right">
+              <Link to="/cart" className="nav-margins">cart</Link>
+              { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
           </div>
         </div>
       </nav>
@@ -50,17 +44,14 @@ export class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-      <ul className="nav navbar-nav navbar-right login-ul">
-        <li>
-         <Link to="/signup" activeClassName="active">signup</Link>
-        </li>
-        <li>
-          <Link to="#" activeClassName="active" onClick={this.handleClick}>login</Link>
+      <div>
+        <Link to="/signup" className="nav-margins" activeClassName="active">signup</Link>
 
-            {this.state.clicked && <div id="login"><Login /></div>}
+        <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>
 
-        </li>
-      </ul>
+              {this.state.clicked && <div id="login"><Login /></div>}
+
+      </div>
     )
   }
 
@@ -68,18 +59,17 @@ export class Navbar extends React.Component {
     const name = this.props.currentUser.name || this.props.currentUser.email;
     const userId = this.props.currentUser.id;
     return (
-      <ul className="nav navbar-nav navbar-right">
-        <li>
-          <Link to={`/user/${userId}`} activeClassName="active">My Account</Link>
-        </li>
-        <li>
+      <div>
+
+        <Link to={`/user/${userId}`} className="nav-margins" activeClassName="active">My Account</Link>
+
         <button
-          className="navbar-btn btn btn-default"
+          className="log-out-btn nav-margins"
           onClick={this.props.logout}>
           logout {name}
         </button>
-        </li>
-      </ul>
+
+      </div>
     )
   }
 }

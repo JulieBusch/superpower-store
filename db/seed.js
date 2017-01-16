@@ -16,35 +16,35 @@ const seedProducts = () => db.Promise.map(productsArr, product => db.model('prod
 const productsArr = [
 	{
 	  name: 'Flight',
-	  image:'hjkhk',
+	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'hkjdhkjh',
 	  price: 130.00,
 	  tags: ["cool", "awesome"],
-	  thumbnail: 'hjkhk'
+	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
 	  name: 'Ethical X-ray Vision',
-	  image:'hjkhk',
+	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'hkjdhkjh',
 	  price: 125.00,
 	  tags: ["lame", "ethical"],
-	  thumbnail: 'hjkhk'
+	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
 	  name: 'Magnanimity',
-	  image:'hjkhk',
+	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'hkjdhkjh',
 	  price: 120.00,
 	  tags: ["awesome", "ethical"],
-	  thumbnail: 'hjkhk'
+	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
 	  name: 'Telekinesis',
-	  image:'hjkhk',
+	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'hkjdhkjh',
 	  price: 100.00,
 	  tags: ["awesome", "dangerous"],
-	  thumbnail: 'hjkhk'
+	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	}
 ]
 
