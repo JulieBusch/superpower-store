@@ -26,7 +26,6 @@ export class SingleProduct extends React.Component {
 
   render() {
     var selectedProduct = this.props.selectedProduct
-    console.log("PRAAAAAAAAAHHHHPS ", this.props)
     return(
       <div className="popUp">
         <div className="column-2">
@@ -45,6 +44,9 @@ export class SingleProduct extends React.Component {
               <button className="product-view-btns">Review Cart</button>
             </Link>
           </div>
+        </div>
+        <div>
+          <Link to="/review">Leave a Review of This Power</Link>
         </div>
         <div className="item-reviews column-2">
           {this.props.reviews.slice(0, 3).map((review) => {

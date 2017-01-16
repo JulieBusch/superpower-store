@@ -27,6 +27,12 @@ module.exports = require('express').Router()
   .then(reviews => res.send(reviews))
   .catch(next)
 
+  .post('/:id/addReview', function(req, res, next) {
+  	Review.create(req.body)
+  	.then(review => res.send("review saved successfully"))
+  	.catch(next)
+  })
+
 	.get('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => res.json(user))
