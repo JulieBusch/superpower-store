@@ -25,6 +25,14 @@ const reducer = (state = initialProductsState, action) => {
 		newState.similarProducts = action.products
 		break;
 
+		case CLEAR_SELECTED_PRODUCT:
+		newState.selectedProduct = {}
+		break;
+
+		case CLEAR_SIMILAR_PRODUCTS:
+		newState.similarProducts = []
+		break;
+
 		default:
 		return state
 	}
@@ -37,6 +45,8 @@ const reducer = (state = initialProductsState, action) => {
 const RECEIVE_ALL_PRODUCTS = 'RECEIVE_ALL_PRODUCTS'
 const RECEIVE_SINGLE_PRODUCT = 'RECEIVE_SINGLE_PRODUCT'
 const RECEIVE_SIMILAR_PRODUCTS = 'RECEIVE_SIMILAR_PRODUCTS'
+const CLEAR_SELECTED_PRODUCT = 'CLEAR_SELECTED_PRODUCT'
+const CLEAR_SIMILAR_PRODUCTS = 'CLEAR_SIMILAR_PRODUCTS'
 
 export const allProducts = products => ({
 	type: RECEIVE_ALL_PRODUCTS, products
@@ -48,6 +58,14 @@ export const singleProduct = product => ({
 
 export const similarProducts = products => ({
 	type: RECEIVE_SIMILAR_PRODUCTS, products
+})
+
+export const clearSelectedProduct = () => ({
+	type: CLEAR_SELECTED_PRODUCT
+})
+
+export const clearSimilarProducts = () => ({
+	type: CLEAR_SIMILAR_PRODUCTS
 })
 
 /*----------------AJAX REQUESTS------------------*/
