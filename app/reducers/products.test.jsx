@@ -2,7 +2,11 @@ import {expect} from 'chai'
 import products from './products'
 
 describe('the products reducer', () => {
-const initialState = {products: []}
+const initialState = {
+  products: [],
+  selectedProduct: {},
+  similarProducts: []
+};
 const superpower = {
     name: 'Flight',
     image:'hjkhk',
@@ -18,8 +22,8 @@ const superpower = {
 	})
 
 	it('on RECEIVE_ALL_PRODUCTS(products), its state becomes products', () => {
-		const next = products(initialState, 
+		const next = products(initialState,
 			{type: 'RECEIVE_ALL_PRODUCTS', products: [superpower]})
-		expect(next).to.eql({products: [superpower]})
+		expect(next.products).to.eql([superpower])
 	})
 })
