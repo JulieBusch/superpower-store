@@ -10,23 +10,23 @@ const initialProductsState = {
 
 const reducer = (state = initialProductsState, action) => {
 
-	const newState = Object.assign({}, state);
+	const newState = Object.assign({}, state)
 
 	switch(action.type){
 		case RECEIVE_ALL_PRODUCTS:
-		newState.products = action.products;
+		newState.products = action.products
 		break
 
 		case RECEIVE_SINGLE_PRODUCT:
-		newState.selectedProduct = action.product;
+		newState.selectedProduct = action.product
 		break;
 
 		case RECEIVE_SIMILAR_PRODUCTS:
-		newState.similarProducts = action.products;
+		newState.similarProducts = action.products
 		break;
 
 		default:
-		return state;
+		return state
 	}
 
 	return newState
