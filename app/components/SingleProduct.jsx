@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-import StarRating from 'react-star-rating';
+import StarRatingComponent from 'react-star-rating-component';
 
 import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts, clearProductReviews } from '../reducers/products'
 
@@ -48,9 +48,10 @@ export class SingleProduct extends React.Component {
         </div>
         <div className="item-reviews column-2">
           {this.props.reviews.slice(0, 3).map((review) => {
-            return (<div key={review.id} className="item-reviews">
-              <h5>{review.user.name}</h5>
-              <StarRating name="product-rating" totalStars={5} rating={review.rating} disabled={true} size={20} className="stars"/>
+            return (
+              <div key={review.id} className="item-reviews">
+                <h5>{review.user.name}</h5>
+                <StarRatingComponent name="product-rating" value={review.rating} editing={false} className="stars"/>
               <div>
                 <span>{review.text}</span>
               </div>
