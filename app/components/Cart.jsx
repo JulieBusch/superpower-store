@@ -9,7 +9,9 @@ class Cart extends React.Component {
 
   constructor(props){
     super(props)
-    //this.orderDivs = this.orderDivs.bind(this)
+
+    // this.orderDivs = this.orderDivs.bind(this)
+
   }
 
   handleClick(item){
@@ -19,6 +21,7 @@ class Cart extends React.Component {
   }
 
   render() {
+
 
     var orderDivs = this.props.orderDetails.map(function(item){
       return (
@@ -53,6 +56,8 @@ class Cart extends React.Component {
           Checkout
           </Link>
         </div>
+
+
       </div>
     )
   }
@@ -60,17 +65,21 @@ class Cart extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
+
 const mapStateToProps = (state) => {
   return ({
     selectedUser: state.user.selectedUser,
     order: state.orders.selectedOrder,
     orderDetails: state.orders.selectedOrderDetails
+
   })
 }
 
 const mapDispatchToProps = () => {
+
   return ({})
   // return
+
   // function that deletes an item from the order
   // function that subtotals the order(??)
 }
