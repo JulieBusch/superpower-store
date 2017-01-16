@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const initialState = {
    orders: [],
-   selectedOrder: {}
+   selectedOrder: {},
+   selectedOrderDetails: []
 }
 
 /* -----------------    ACTIONS     ------------------ */
@@ -10,7 +11,8 @@ const initialState = {
 const SELECTED_ORDER = 'SELECTED_ORDER'
 const CREATED_ORDER = 'CREATED_ORDER'
 const ALL_ORDERS = 'ALL_ORDERS'
-
+const UPDATED_ORDER = 'UPDATED_ORDER'
+const SELECTED_DETAILS = 'SELECTED_DETAILS'
 
 /* ------------       REDUCER     ------------------ */
 
@@ -32,6 +34,14 @@ const reducer = (state = initialState, action) => {
       newState.orders = action.orders
       break
 
+      case UPDATED_ORDER:
+      newState.selectedOrder = action.order
+      break
+
+      case SELECTED_DETAILS:
+      newState.selectedOrderDetails = action.orderDetails
+      break
+
       default:
       return state
 
@@ -47,12 +57,28 @@ export const selectedOrder = order => ({
    type: SELECTED_ORDER, order
 })
 
+export const selectedOrderDetails = orderDetails => ({
+   type: SELECTED_DETAILS, orderDetails
+})
+
 export const createdOrder = order => ({
    type: CREATED_ORDER, order
 })
 
 export const allOrders = orders => ({
    type: ALL_ORDERS, orders
+})
+
+export const updatedOrderStatus = order => ({
+   type: UPDATED_ORDER, order
+})
+
+export const updatedOrderProducts = order => ({
+   type: UPDATED_ORDER, order
+})
+
+export const updatedOrderUser = order => ({
+   type: UPDATED_ORDER, order
 })
 
 /* ------------       DISPATCHERS     ------------------ */
@@ -64,10 +90,16 @@ export const selectOrder = (orderId) =>
          .then((foundOrder) => dispatch(selectedOrder(foundOrder)))
          .catch((failed) => dispatch(selectedOrder({})))
 
-
-export const addNewOrder = (order) =>
+export const selectOrderDetails = (orderId) =>
    dispatch =>
-      axios.post('/api/order/', order)
+      axios.get(`/api/orders/${orderId}/orderline`)
+         .then(res => res.data)
+         .then((foundOrderDetails) => dispatch(selectedOrderDetails(foundOrderDetails)))
+         .catch((failed) => dispatch(selectedOrderDetails([])))
+
+export const addNewOrder = () =>
+   dispatch =>
+      axios.post('/api/order/')
          .then(res => res.data)
          .then(newOrder => dispatch(createdOrder(newOrder)))
          .catch(failed => console.log(failed))
@@ -80,5 +112,27 @@ export const getAllOrders = () =>
          .then(foundOrders => dispatch(allOrders(foundOrders)))
          .catch(failed => console.log(failed))
 
+export const updateOrderStatus = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${order.id}`, order)
+         .then(res => res.data)
+         .then(updatedOrder => dispatch(updatedOrderStatus(updatedOrder)))
+         .catch((failed) => console.log(failed))
+
+export const updateOrderUser = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${order.id}/setuser/${order.user_id}`, order)
+         .then(res => res.data)
+         .then(updatedOrder => dispatch(updatedOrderUser(updatedOrder)))
+         .catch((failed) => console.log(failed))
+
+export const updateOrder = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${order.id}/product/${order.product_id}`)
+         .then( () => {
+            Order.findById(order.id)
+         })
+         .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
+         .catch((failed) => console.log(failed))
 
 export default reducer

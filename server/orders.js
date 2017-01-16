@@ -115,23 +115,18 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
       return req.order.addProduct(req.product, {
         quantity: foundProduct[0].orderlines.quantity + 1
       })
-      .then(() => {
-        return req.order.save()
-      })
-      .then(result => res.send(result))
-      .catch(next)
     } else {
       return req.order.addProduct(req.product, {
         itemPrice: req.product.price,
         quantity: 1
       })
-      .then(() => {
-        return req.order.save()
-      })
-      .then(result => res.send(result))
-      .catch(next)
     }
   })
+  .then(() => {
+    return req.order.save()
+  })
+  .then(result => res.send(result))
+  .catch(next)
 })
 
 // remove item from order

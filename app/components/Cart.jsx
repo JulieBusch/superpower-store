@@ -9,7 +9,7 @@ class Cart extends React.Component {
 
   constructor(props){
     super(props)
-    this.orderDivs = this.orderDivs.bind(this)
+    //this.orderDivs = this.orderDivs.bind(this)
   }
 
   handleClick(item){
@@ -20,9 +20,11 @@ class Cart extends React.Component {
 
   render() {
 
-    var orderDivs = this.props.order.map(function(item){
+    var orderDivs = this.props.orderDetails.map(function(item){
       return (
+
         <div key={item.id}>
+        <h1>CART!</h1>
           <div className="nav-left">
             <div className="item-thumbnail"><img src={item.thumbnail} /></div>
             <h4>{item.name}</h4>
@@ -39,9 +41,12 @@ class Cart extends React.Component {
     return (
       <div className="container">
         <h1> Your Cart </h1>
+
+            {!this.props.selectedUser.length && <div>Your shopping cart is empty!</div>}
+
         {orderDivs}
         <div>
-          Total: {this.total(this.props.order)}
+          Total: {this.props.order.total}
         </div>
         <div>
           <Link to="/checkout">
@@ -55,13 +60,16 @@ class Cart extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
   return ({
-    // order: state.
+    selectedUser: state.user.selectedUser,
+    order: state.orders.selectedOrder,
+    orderDetails: state.orders.selectedOrderDetails
   })
 }
 
 const mapDispatchToProps = () => {
+  return ({})
   // return
   // function that deletes an item from the order
   // function that subtotals the order(??)

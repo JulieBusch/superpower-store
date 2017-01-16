@@ -11,7 +11,7 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
-
+import Cart from './components/Cart'
 
 import { receiveAllProducts } from './reducers/products'
 import Success from './components/Success'
@@ -53,6 +53,7 @@ render (
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/success" component={Success} />
+        <Route path="/cart" component={Cart} />
       </Route>
     </Router>
   </Provider>,
