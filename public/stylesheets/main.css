@@ -440,6 +440,12 @@ log-out-btn*/
   justify-content: space-between;
   margin-top: 100px; }
 
+.cart {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
 .catalog-tile {
   margin-top: 50px;
   margin-bottom: 50px; }
