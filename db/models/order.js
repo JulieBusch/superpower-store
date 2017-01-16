@@ -25,6 +25,7 @@ const Order = db.define('orders', {
   hooks: {
     beforeUpdate: function(order) {
       //order.total = 33.33
+      //return promise here!
       return order.getProducts()
         .then( orderProducts => {
           let newTotal = orderProducts.reduce((a, b) => {
