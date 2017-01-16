@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-import { clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
+import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
 
 /*-----------------COMPONENT------------------*/
 
@@ -11,25 +11,25 @@ export class SingleProduct extends React.Component {
   constructor(props) {
     super(props)
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleCloseClick = this.handleCloseClick.bind(this)
   }
 
-  handleClick() {
+  handleCloseClick() {
     this.props.clearDetailView()
+  }
+
+  handleNewItemClick(productId) {
+    this.props.setNewSelectedProduct(productId)
   }
 
   render() {
     var selectedProduct = this.props.selectedProduct
+    console.log("TAAAAAAGS ",selectedProduct.tags)
     return(
       <div className="popUp">
         <div className="column-2">
-          <Link to="#" onClick={this.handleClick} >Close</Link>
+          <Link to="#" onClick={this.handleCloseClick} >Close</Link>
           <img src={selectedProduct.image} />
-          <div>
-            {/*selectedProduct.tags.map(function(tag){
-              return (<p>{tag}</p>)
-            })*/}
-          </div>
         </div>
         <div className="column-2">
           <h2>{selectedProduct.name}</h2>
@@ -45,7 +45,16 @@ export class SingleProduct extends React.Component {
           </div>
         </div>
         <div className="similar-items">
-
+          {this.props.similarProducts.slice(0, 5).map((product) => {
+            return (<div key={product.id} className="column-5 catalog-tile">
+              <h4>{product.name}</h4>
+              <div className="product-thumbnail">
+                <Link to='#' onClick={this.handleNewItemClick.bind(this, product.id)}>
+                  <img src={product.thumbnail} />
+                </Link>
+              </div>
+            </div>)
+          })}
         </div>
       </div>
     )
@@ -70,6 +79,9 @@ function mapDispatchToProps(dispatch) {
     clearDetailView: () => {
       dispatch(clearSelectedProduct())
       dispatch(clearSimilarProducts())
+    },
+    setNewSelectedProduct: (productId) => {
+      dispatch(receiveSingleProduct(productId))
     }
   }
 }
