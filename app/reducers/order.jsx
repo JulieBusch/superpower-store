@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Order from '../../db/models/order'
 
 const initialState = {
    orders: [],
@@ -112,6 +113,21 @@ export const getAllOrders = () =>
          .then(foundOrders => dispatch(allOrders(foundOrders)))
          .catch(failed => console.log(failed))
 
+export const getAllOrdersByUserId = (userId) =>
+   dispatch =>
+      axios.get(`/api/orders/user/${userId}`)
+         .then(res => res.data)
+         .then(foundOrders => dispatch(allOrders(foundOrders)))
+         .catch(failed => console.log(failed))
+
+export const getOpenOrderByUserId = (userId) =>
+   dispatch =>
+      axios.get(`/api/orders/user/${userId}/open`)
+         .then(res => res.data)
+         .then(foundOrder => dispatch(selectedOrder(foundOrder)))
+
+         .catch(failed => console.log(failed))
+
 export const updateOrderStatus = (order) =>
    dispatch =>
       axios.put(`/api/orders/${order.id}`, order)
@@ -129,6 +145,15 @@ export const updateOrderUser = (order) =>
 export const updateOrder = (order) =>
    dispatch =>
       axios.put(`/api/orders/${order.id}/product/${order.product_id}`)
+         .then( () => {
+            Order.findById(order.id)
+         })
+         .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
+         .catch((failed) => console.log(failed))
+
+export const deleteProductFromOrder = (order) =>
+   dispatch =>
+      axios.delete(`/api/orders/${order.id}/product/${order.product_id}`)
          .then( () => {
             Order.findById(order.id)
          })

@@ -14,52 +14,55 @@ class Cart extends React.Component {
 
   }
 
-  handleClick(item){
-    // possibly render a quick 'deleted!' mesg
-    console.log(item)
-    // this.props.ACTIONCREATOR()
-  }
+  // handleClick(item){
+  //   // possibly render a quick 'deleted!' mesg
+  //   console.log(item)
+  //   // this.props.ACTIONCREATOR()
+  // }
 
   render() {
 
 
-    var orderDivs = this.props.orderDetails.map(function(item){
-      return (
+  //   var orderDivs = this.props.orderDetails.map(function(item){
+  //     return (
 
-        <div key={item.id}>
-        <h1>CART!</h1>
-          <div className="nav-left">
-            <div className="item-thumbnail"><img src={item.thumbnail} /></div>
-            <h4>{item.name}</h4>
-          </div>
+  //       <div key={item.id}>
+  //       <h1>CART!</h1>
+  //         <div className="nav-left">
+  //           <div className="item-thumbnail"><img src={item.thumbnail} /></div>
+  //           <h4>{item.name}</h4>
+  //         </div>
 
-          <div className="nav-right">
-            <h3>{item.price}</h3>
-            <img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
-          </div>
-        </div>
-        )
-    })
+  //         <div className="nav-right">
+  //           <h3>price: {item.price}</h3>
+  //           <h3>quantity: {item.orderlines.quantity}</h3>
+  //           <h3>subtotal: {item.orderlines.subtotal}</h3>
+  //           {//<img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
+  //         }
+  //         </div>
+  //       </div>
+  //       )
+  //   })
 
-    return (
-      <div className="container">
-        <h1> Your Cart </h1>
+  //   return (
+  //     <div className="container">
+  //       <h1> Your Cart </h1>
 
-            {!this.props.selectedUser.length && <div>Your shopping cart is empty!</div>}
+  //           {!this.props.orderDetails.length && <div>Your shopping cart is empty!</div>}
 
-        {orderDivs}
-        <div>
-          Total: {this.props.order.total}
-        </div>
-        <div>
-          <Link to="/checkout">
-          Checkout
-          </Link>
-        </div>
+  //       {orderDivs}
+  //       <div>
+  //         Total: {this.props.order.total}
+  //       </div>
+  //       <div>
+  //         <Link to="/checkout">
+  //         Checkout
+  //         </Link>
+  //       </div>
 
 
-      </div>
-    )
+  //     </div>
+  //   )
   }
 }
 
@@ -75,7 +78,7 @@ const mapStateToProps = (state) => {
   })
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
 
   return ({})
   // return
