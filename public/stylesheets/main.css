@@ -390,6 +390,7 @@ nav {
   width: 100%;
   position: fixed;
   top: 0;
+  background: rgba(1, 1, 1, 0.25);
   align-items: center; }
   nav .container {
     flex-direction: row;
@@ -454,4 +455,4 @@ log-out-btn*/
   border-radius: 50%; }
 
 .signin-container {
-  background-color: gray; }
+  margin-top: 100px; }
