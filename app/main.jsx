@@ -11,6 +11,7 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
+import Cart from './components/Cart'
 
 
 import { receiveAllProducts } from './reducers/products'
@@ -43,6 +44,11 @@ const onProductsEnter =(nextRouterState) => {
   store.dispatch(receiveAllProducts())
 }
 
+const onCartEnter = (nextRouterState) => {
+  // fill this out with proper dispatcher that gets everything from cart in order model
+  //store.dispatch(receiveWorkingOrder())
+}
+
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -53,6 +59,7 @@ render (
         <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/success" component={Success} />
+        <Route path="/cart" component={Cart} onEnter={onCartEnter}/>
       </Route>
     </Router>
   </Provider>,
