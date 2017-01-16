@@ -20,15 +20,12 @@ body {
   width: 100%;
   justify-content: space-between; }
 
-<<<<<<< HEAD
-=======
 .column-2 {
   display: flex;
   width: 48%;
   text-align: center;
   flex-direction: column; }
 
->>>>>>> 87583b003cab0af6188a7a98f7543d3a64c633d8
 .column-3 {
   display: flex;
   width: 29%;
