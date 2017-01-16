@@ -12,6 +12,7 @@ import ProductsContainer, {Products} from './Products'
 
 describe('<Products />', () => {
   const superpower = {
+    id: 1,
     name: 'Flight',
     image:'hjkhk',
     description: 'hkjdhkjh',
@@ -21,14 +22,15 @@ describe('<Products />', () => {
   };
 
   const state = {
-    products: [superpower]
+    products: [superpower],
+    selectedProduct: superpower
   }
 
   let root, store
   beforeEach('render the root', () => {
     //store = createStore(state => state, state)
     //console.log("store", store, "state", store.getState());
-    root = shallow(<Products products={[superpower]}/>)
+    root = shallow(<Products selectedProduct={superpower} products={[superpower]}/>)
     //console.log(root);
   })
 
