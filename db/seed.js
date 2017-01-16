@@ -56,7 +56,7 @@ const productsArr = [
   {
     name: 'Telepathy',
     image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-    description: 'Hear the secret thoughts of those around you. We have used cutting-edge science to bring to you the power to read the mind of any person who is not equipped with our Occlusion ability. Our most recent edition of Psychic Mind Reading allows you to tune in to an individual\'s thoughts when desired and tune out when necessary, avoiding the overwhelming din of hearing the thoughts of everyone around you at all times.',
+    description: 'Hear the secret thoughts of those around you. We have used cutting-edge science to bring to you the power to read the mind of any person who is not equipped with our Occlusion ability. Our most recent edition of Telepathy allows you to tune in to an individual\'s thoughts when desired and tune out when necessary, avoiding the overwhelming din of hearing the thoughts of everyone around you at all times.',
     price: 2900000.00,
     tags: ['psychic powers', 'not of this world'],
     thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
