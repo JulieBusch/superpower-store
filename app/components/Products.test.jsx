@@ -34,7 +34,6 @@ describe('<Products />', () => {
 
   it('shows a superpower', () => {
     expect(root.find('h4').text()).equal(superpower.name)
-    expect(root.find('p').text()).equal(`Price: $${superpower.price}`)
     expect(root.find('img')).to.have.length(1)
   })
 
@@ -52,7 +51,7 @@ describe('<Products /> Connection', () => {
   };
 
   const state = {
-    products: {products: [superpower]} 
+    products: {products: [superpower]}
   }
 
   let root, store
