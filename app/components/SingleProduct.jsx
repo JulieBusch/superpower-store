@@ -2,7 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
+import StarRating from 'react-star-rating';
+
+import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts, clearProductReviews } from '../reducers/products'
 
 /*-----------------COMPONENT------------------*/
 
@@ -24,7 +26,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     var selectedProduct = this.props.selectedProduct
-    console.log("TAAAAAAGS ",selectedProduct.tags)
+
     return(
       <div className="popUp">
         <div className="column-2">
@@ -43,6 +45,17 @@ export class SingleProduct extends React.Component {
               <button className="product-view-btns">Review Cart</button>
             </Link>
           </div>
+        </div>
+        <div className="item-reviews column-2">
+          {this.props.reviews.slice(0, 3).map((review) => {
+            return (<div key={review.id} className="item-reviews">
+              <h5>{review.user.name}</h5>
+              <StarRating name="product-rating" totalStars={5} rating={review.rating} disabled={true} size={20} className="stars"/>
+              <div>
+                <span>{review.text}</span>
+              </div>
+            </div>)
+          })}
         </div>
         <div className="similar-items">
           {this.props.similarProducts.slice(0, 5).map((product) => {
@@ -70,7 +83,8 @@ export class SingleProduct extends React.Component {
 function mapStateToProps(state) {
   return {
     similarProducts: state.products.similarProducts,
-    selectedProduct: state.products.selectedProduct
+    selectedProduct: state.products.selectedProduct,
+    reviews: state.products.selectedProductReviews
   }
 }
 
@@ -79,6 +93,7 @@ function mapDispatchToProps(dispatch) {
     clearDetailView: () => {
       dispatch(clearSelectedProduct())
       dispatch(clearSimilarProducts())
+      dispatch(clearProductReviews())
     },
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))

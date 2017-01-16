@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 import Splash from './Splash'
 import SingleProduct from './SingleProduct'
 
-import {receiveSingleProduct, receiveSimilarProducts} from '../reducers/products'
+import {receiveSingleProduct, receiveSimilarProducts, receiveProductReviews} from '../reducers/products'
 
 
 export class Products extends Component {
@@ -63,6 +63,7 @@ const mapDispatchToProps = dispatch => {
     selectProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
       dispatch(receiveSimilarProducts(productId))
+      dispatch(receiveProductReviews(productId))
     }
   }
 }

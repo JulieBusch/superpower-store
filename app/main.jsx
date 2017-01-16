@@ -13,7 +13,7 @@ import Userpage from './components/Userpage'
 import Products from './components/Products'
 import SingleProduct from './components/SingleProduct'
 
-import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts } from './reducers/products'
+import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts, receiveProductReviews } from './reducers/products'
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -47,6 +47,7 @@ const onSingleItemEnter = (nextRouterState) => {
   const productId = nextRouterState.params.id;
   store.dispatch(receiveSingleProduct(productId))
   store.dispatch(receiveSimilarProducts(productId))
+  store.dispatch(receiveProductReviews(productId))
 }
 
 render (
