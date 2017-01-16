@@ -44,16 +44,14 @@ const onProductsEnter =(nextRouterState) => {
   store.dispatch(receiveAllProducts())
 }
 
-<<<<<<< HEAD
 const onCartEnter = (nextRouterState) => {
   // fill this out with proper dispatcher that gets everything from cart in order model
   //store.dispatch(receiveWorkingOrder())
-=======
+
 const onSingleItemEnter = (nextRouterState) => {
   const productId = nextRouterState.params.id;
   store.dispatch(receiveSingleProduct(productId))
   store.dispatch(receiveSimilarProducts(productId))
->>>>>>> master
 }
 
 render (
