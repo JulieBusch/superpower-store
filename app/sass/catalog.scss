@@ -1,3 +1,46 @@
+<<<<<<< HEAD
 .catalog {
   justify-content: space-between;
+=======
+.splash {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('/splash.jpg');
+  background-position: 0 -1200px;
+  background-size: cover;
+
+  span {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+  }
+}
+
+.catalog {
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.cart {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.catalog-tile {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.product-thumbnail {
+
+  img {
+    border-radius: 50%;
+  }
+>>>>>>> 871050f865225054602645f591d94a80433e47b8
 }

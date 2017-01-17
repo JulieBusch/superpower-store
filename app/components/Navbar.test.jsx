@@ -19,10 +19,8 @@ describe('<Navbar />', () => {
   })
 
   it('shows signup and login links when there is no currentUser', () => {
-    expect(wrapper.find('.login-ul').childAt(0)).to.have.html('<li><a>signup</a></li>')
-    expect(wrapper.find('.login-ul').childAt(1)).to.have.html('<li><a>login</a></li>')
+    expect(wrapper.find('.login-signup')).be.present()
   })
-
 
   it('shows the login component when login link is clicked', () => {
     wrapper.setState({clicked: true})
