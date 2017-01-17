@@ -31,7 +31,7 @@ class Cart extends React.Component {
       return (
 
         <div key={item.id}>
-        <h1>CART!</h1>
+
           <div className="nav-left">
             <div className="item-thumbnail"><img src={item.thumbnail} /></div>
             <h4>{item.name}</h4>

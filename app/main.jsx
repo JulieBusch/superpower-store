@@ -41,6 +41,8 @@ const onAppEnter = () => {
 const onUserpageEnter = (nextRouterState) => {
   const userId = nextRouterState.params.id;
   store.dispatch(selectUser(userId))
+  //find user's open order
+  store.dispatch(getOpenOrderByUserId(userId))
   //load order history
 }
 
@@ -49,18 +51,8 @@ const onProductsEnter = (nextRouterState) => {
 }
 
 const onCartEnter = (nextRouterState) => {
-  // const user = store.getState().selectedUser
-  // if (user.length) {
-  //   store.dispatch(getOpenOrderByUserId(user.id))
-  // }
-  store.dispatch(selectOrder(7))
-  .then( () => {
   const orderId = store.getState().orders.selectedOrder.id
   store.dispatch(selectOrderDetails(orderId))
-
-})
-  // fill this out with proper dispatcher that gets everything from cart in order model
-  //store.dispatch(receiveWorkingOrder())
 }
 
 const onSingleItemEnter = (nextRouterState) => {
