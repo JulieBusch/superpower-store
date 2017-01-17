@@ -12,7 +12,7 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import SingleProduct from './components/SingleProduct'
-import Review from './components/SingleProduct'
+import Review from './components/Review'
 
 import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts, receiveProductReviews } from './reducers/products'
 import Success from './components/Success'
@@ -58,7 +58,7 @@ render (
         <IndexRedirect to="/products" />
         {/*<Route path="/jokes" component={Jokes} />*/}
         <Route path="/signup" component={SignUp} />
-        <Route path="/user/:id" component={Userpage} onEnter={onUserpageEnter} />
+        <Route path="/users/:id" component={Userpage} onEnter={onUserpageEnter} />
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/products/:id" component={SingleProduct} onEnter={onSingleItemEnter} />
         <Route path="/success" component={Success} />
