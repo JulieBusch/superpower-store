@@ -17,37 +17,15 @@ const Order = db.define('orders', {
   hooks: {
     beforeUpdate: function(order) {
       //order.total = 33.33
-      order.getProducts()
+      return order.getProducts()
       .then( orderProducts => {
         let newTotal = orderProducts.reduce((a, b) => {
           return a + b.orderlines.subtotal
          }, 0)
-        return order.update({ total: newTotal })
+        return order.total = newTotal
       })
       .catch(err => console.log(err))
     }
-
-
-    //   return Orderline.findAll({
-    //     where: {
-    //       order_id: order.id
-    //     }
-    //   })
-    //   .then(foundOrderlines => {
-    //     let subtotalTest = foundOrderlines.map(function(ol){
-    //       return ol.subtotal
-    //     })
-    //     return subtotalTest
-    //   })
-    //   .then(subtotals => {
-    //     let total = subtotals.reduce(function(a, b) {
-    //       return a + b
-    //     }, 0)
-    //     return order.update({
-    //       total: total
-    //     })
-    //   })
-    //   .catch(err => console.log(err))
 
   }
 })

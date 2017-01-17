@@ -1,5 +1,4 @@
 import axios from 'axios'
-// import Order from '../../db/models/order'
 
 const initialState = {
    orders: [],
@@ -146,22 +145,16 @@ export const updateOrderUser = (order) =>
          .then(updatedOrder => dispatch(updatedOrderUser(updatedOrder)))
          .catch((failed) => console.log(failed))
 
-// export const updateOrder = (order) =>
-//    dispatch =>
-//       axios.put(`/api/orders/${order.id}/product/${order.product_id}`)
-//          .then( () => {
-//             Order.findById(order.id)
-//          })
-//          .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
-//          .catch((failed) => console.log(failed))
+export const updateOrder = (order) =>
+   dispatch =>
+      axios.put(`/api/orders/${order.id}/product/${order.product_id}`)
+      .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
+         .catch((failed) => console.log(failed))
 
-// export const deleteProductFromOrder = (order) =>
-//    dispatch =>
-//       axios.delete(`/api/orders/${order.id}/product/${order.product_id}`)
-//          .then( () => {
-//             Order.findById(order.id)
-//          })
-//          .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
-//          .catch((failed) => console.log(failed))
+export const deleteProductFromOrder = (order) =>
+   dispatch =>
+      axios.delete(`/api/orders/${order.id}/product/${order.product_id}`)
+         .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
+         .catch((failed) => console.log(failed))
 
 export default reducer
