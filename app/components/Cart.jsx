@@ -14,11 +14,11 @@ class Cart extends React.Component {
 
   }
 
-  handleClick(item){
-    // possibly render a quick 'deleted!' mesg
-    console.log(item)
-    // this.props.ACTIONCREATOR()
-  }
+  // handleClick(item){
+  //   // possibly render a quick 'deleted!' mesg
+  //   console.log(item)
+  //   // this.props.ACTIONCREATOR()
+  // }
 
   render() {
 
@@ -37,7 +37,8 @@ class Cart extends React.Component {
             <h3>price: {item.price}</h3>
             <h3>quantity: {item.orderlines.quantity}</h3>
             <h3>subtotal: {item.orderlines.subtotal}</h3>
-            <img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
+            {//<img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
+          }
           </div>
         </div>
         )

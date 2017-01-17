@@ -92,11 +92,15 @@ export const selectOrder = (orderId) =>
          .catch((failed) => dispatch(selectedOrder({})))
 
 export const selectOrderDetails = (orderId) =>
-   dispatch =>
-      axios.get(`/api/orders/${orderId}/orderline`)
-         .then(res => res.data)
+   dispatch => {
+      console.log("REDUCER")
+      return axios.get(`/api/orders/${orderId}/orderline`)
+         .then(res => {
+            console.log('RES.DATA ', res.data)
+            return   res.data})
          .then((foundOrderDetails) => dispatch(selectedOrderDetails(foundOrderDetails)))
          .catch((failed) => dispatch(selectedOrderDetails([])))
+      }
 
 export const addNewOrder = () =>
    dispatch =>

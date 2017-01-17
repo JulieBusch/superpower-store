@@ -54,10 +54,11 @@ const onCartEnter = (nextRouterState) => {
   //   store.dispatch(getOpenOrderByUserId(user.id))
   // }
   store.dispatch(selectOrder(4))
-  const order = store.getState().selectedOrder
-  if (order.length) {
-    store.dispatch(selectOrderDetails(order.id))
-  }
+  .then( () => {
+  const orderId = store.getState().orders.selectedOrder.id
+  store.dispatch(selectOrderDetails(orderId))
+
+})
   // fill this out with proper dispatcher that gets everything from cart in order model
   //store.dispatch(receiveWorkingOrder())
 }
