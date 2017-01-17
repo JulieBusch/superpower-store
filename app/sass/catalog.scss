@@ -21,7 +21,6 @@
   margin-top: 100px;
 }
 
-
 // .cart {
 //   margin-top: 100px;
 //   display: flex;
@@ -40,3 +39,17 @@
     border-radius: 50%;
   }
 }
+
+.similar-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.similar-thumbnail {
+  img {
+    border-radius: 50%;
+    max-width: 100%;
+  }
+}
+
