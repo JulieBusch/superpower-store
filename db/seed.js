@@ -8,6 +8,9 @@ const seedUsers = () => db.Promise.map([
   {name: 'Dennis Hoey', email: 'dennis@example.com', password: '1234'},
 ], user => db.model('users').create(user))
 
+
+const seedReviews = () => db.Promise.map(reviewsArr, review => db.model('reviews').create(review))
+
 const seedOrders = () => db.Promise.map([
   {user_id: 1, status: 'open'},
   {user_id: 1, status: 'completed'},
@@ -171,11 +174,33 @@ const productsArr = [
   }
 ]
 
+const reviewsArr = [
+  {
+    rating: 4,
+    text: "Flight is pretty sweet but if you go too high up you pass out from lack of oxygen and it's really cold. Also, avoid flying around airports. Still cool, though- totally worth the bail and the hospital bills! <3",
+    user_id: 4,
+    product_id: 1
+  },
+  {
+    rating: 5,
+    text: "I had no problems with temperature or oxygen while flying. I got the Flight/Super Speed combo and had a blast!",
+    user_id: 2,
+    product_id: 1
+  },
+  {
+    rating: 2,
+    text: "Didn't fully read description, thought I'd be able to see boobs. Works fine otherwise. Would not purchase again.",
+    user_id: 5,
+    product_id: 2
+  },
+]
+
 const seedOrderlines = () => db.Promise.map([
   {order_id: 3, product_id: 2, quantity: 3},
   {order_id: 1, product_id: 4, quantity: 1},
   {order_id: 2, product_id: 1, quantity: 1}
 ], orderline => db.model('orderlines').create(orderline))
+
 
 
 db.didSync
@@ -186,6 +211,8 @@ db.didSync
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
+  .then(seedReviews)
+  .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
   .then(seedOrderlines)
   .then(orderlines => console.log(`Seeded ${orderlines.length} orders OK`))
   .catch(error => console.error(error))

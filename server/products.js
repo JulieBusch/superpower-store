@@ -3,6 +3,8 @@
 const db = require('APP/db');
 const router = require('express').Router();
 const Product = db.model('products');
+const Review = db.model('reviews');
+const User = db.model('users');
 
 router.get('/', function(req, res, next) {
   console.log(req.user)
@@ -18,12 +20,22 @@ router.get('/:productId/similar', function(req, res, next){
 	.catch(next);
 });
 
+router.get('/:productId/reviews', function(req, res, next) {
+  Review.findAll({
+    where: {
+      product_id: +req.params.productId
+    },
+    include: [User]
+  })
+  .then(reviews => res.send(reviews))
+  .catch(next);
+});
+
 router.get('/:productId', function(req, res, next) {
   Product.findById(req.params.productId)
   .then(product => res.send(product))
   .catch(next);
 });
-
 
 
 //admin only, alter product price
