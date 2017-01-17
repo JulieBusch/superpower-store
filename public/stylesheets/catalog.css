@@ -27,3 +27,12 @@
 
 .product-thumbnail img {
   border-radius: 50%; }
+
+.similar-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.similar-thumbnail img {
+  border-radius: 50%;
+  max-width: 100%; }

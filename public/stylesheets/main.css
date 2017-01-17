@@ -358,7 +358,8 @@ body {
   display: flex;
   text-align: center;
   width: 100%;
-  justify-content: space-between; }
+  justify-content: space-between;
+  flex-direction: row; }
 
 .column-2 {
   display: flex;
@@ -453,6 +454,15 @@ log-out-btn*/
 
 .product-thumbnail img {
   border-radius: 50%; }
+
+.similar-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.similar-thumbnail img {
+  border-radius: 50%;
+  max-width: 100%; }
 
 .signin-container {
   margin-top: 100px; }
