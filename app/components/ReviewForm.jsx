@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {Link, browserHistory} from 'react-router'
 import axios from 'axios'
 
 import StarRatingComponent from 'react-star-rating-component';
@@ -14,7 +14,10 @@ export class Review extends React.Component {
     super(props)
     this.state = {
       rating: 0,
-      text: ""
+      text: "",
+
+      fresh: true,
+      disabled: true
     }
 
     this.onStarClick = this.onStarClick.bind(this)
@@ -22,33 +25,56 @@ export class Review extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  handleChange(evt) {
+    // console.log(this.state.text)
+    this.setState({
+      text: evt.target.value,
+      fresh: false
+    })
+
+    if (this.state.text.length >= 50 && this.state.rating > 0) {
+      this.setState({
+        disabled: false
+      })
+    } else {
+      this.setState({
+        disabled: true
+      })
+    }
+  }
+
   onStarClick(nextVal, prevVal, name) {
-    this.setState({rating: nextVal})
+    this.setState({
+      rating: nextVal
+    })
+
+    if (this.state.text.length >= 50 && this.state.rating > 0) {
+      this.setState({
+        disabled: false
+      })
+    }
   }
 
   formSubmission(evt) {
     evt.preventDefault()
+
     var body = {
-      rating: this.state.rating,
+      rating: +this.state.rating,
       text: this.state.text,
-      user_id: this.props.user.id,
-      product_id: this.props.product.id
+      user_id: +this.props.user.id,
+      product_id: +this.props.product.id
     }
+
     axios.post(`api/users/${this.props.user.id}/review`, body)
     .then(res => res.data)
     .then(review => console.log(review))
     .catch(err => console.log(err))
 
-    this.setState({
-      rating: 0,
-      text: ""
-    });
-  }
-
-  handleChange(evt) {
-    console.log(this.state.text)
-    this.state.text = evt.target.value
-
+    // this.setState({
+    //   rating: 0,
+    //   text: ""
+    // });
+    browserHistory.push(`/`)
   }
 
   render() {
@@ -59,7 +85,11 @@ export class Review extends React.Component {
           <img src={this.props.product.image} />
         </div>
         <span>Your Rating:</span>
-        <StarRatingComponent name="rating" onStarClick={this.onStarClick} />
+        <StarRatingComponent
+          name="rating"
+          onStarClick={this.onStarClick}
+          value={this.state.rating}
+        />
         <form onSubmit={this.formSubmission} >
           <textarea
             name="text"
@@ -68,8 +98,18 @@ export class Review extends React.Component {
             cols="75"
             onChange={this.handleChange}
           />
-          <button type="submit" className="submit-btn"> Submit </button>
+          <button
+            type="submit"
+            disabled={this.state.disabled}
+            className="submit-btn"
+          >
+          Submit
+          </button>
         </form>
+        <div>
+          {(!this.state.fresh && this.state.text.length < 50) &&
+            <div className="warning">Minimum length for a review is 50 characters.</div>}
+        </div>
       </div>
     )
   }

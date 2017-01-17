@@ -14,7 +14,13 @@ import Products from './components/Products'
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
 
-import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts, receiveProductReviews } from './reducers/products'
+import {
+  receiveAllProducts,
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews,
+  clearSelectedProduct
+  } from './reducers/products'
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -41,6 +47,7 @@ const onUserpageEnter = (nextRouterState) => {
 }
 
 const onProductsEnter =(nextRouterState) => {
+  store.dispatch(clearSelectedProduct())
   store.dispatch(receiveAllProducts())
 }
 
