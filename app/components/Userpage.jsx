@@ -18,7 +18,7 @@ constructor(props) {
 render() {
    console.log('props: ', this.props)
    return(
-          <div>
+          <div className="container useraccount">
 
             name: <h2>{this.props.user.name}</h2>
             email: <h3>{this.props.user.email}</h3>
