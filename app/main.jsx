@@ -11,9 +11,12 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
+import Cart from './components/Cart'
+
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
 
+<<<<<<< HEAD
 import {
   receiveAllProducts,
   receiveSingleProduct,
@@ -21,6 +24,11 @@ import {
   receiveProductReviews,
   clearSelectedProduct
   } from './reducers/products'
+=======
+import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts } from './reducers/products'
+import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
+
+>>>>>>> 871050f865225054602645f591d94a80433e47b8
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -44,11 +52,27 @@ const onAppEnter = () => {
 const onUserpageEnter = (nextRouterState) => {
   const userId = nextRouterState.params.id;
   store.dispatch(selectUser(userId))
+  //find user's open order
+  store.dispatch(getOpenOrderByUserId(userId))
+  //load order history
 }
 
+<<<<<<< HEAD
 const onProductsEnter =(nextRouterState) => {
   store.dispatch(clearSelectedProduct())
+=======
+const onProductsEnter = (nextRouterState) => {
+>>>>>>> 871050f865225054602645f591d94a80433e47b8
   store.dispatch(receiveAllProducts())
+}
+
+const onCartEnter = (nextRouterState) => {
+
+  store.dispatch(selectOrder(7))
+  .then(() => {
+    const orderId = store.getState().orders.selectedOrder.id
+    store.dispatch(selectOrderDetails(orderId))
+  })
 }
 
 const onSingleItemEnter = (nextRouterState) => {
@@ -69,7 +93,11 @@ render (
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/products/:id" component={SingleProduct} onEnter={onSingleItemEnter} />
         <Route path="/success" component={Success} />
+<<<<<<< HEAD
         <Route path="/review" component={ReviewForm} />
+=======
+        <Route path="/cart" component={Cart} onEnter={onCartEnter}/>
+>>>>>>> 871050f865225054602645f591d94a80433e47b8
       </Route>
     </Router>
   </Provider>,
