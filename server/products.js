@@ -38,9 +38,6 @@ router.get('/:productId', function(req, res, next) {
 });
 
 
-<<<<<<< HEAD
-=======
-
 //admin only, alter product price
 // router.put('/:productId/price/:price', function(req, res, next) {
 //   Product.findById(req.params.productId)
@@ -51,5 +48,4 @@ router.get('/:productId', function(req, res, next) {
 //   .catch(next)
 // })
 
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 module.exports = router;

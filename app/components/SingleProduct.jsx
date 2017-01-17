@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-<<<<<<< HEAD
 import StarRatingComponent from 'react-star-rating-component';
 
 import {
@@ -16,10 +15,9 @@ import {
   clearProductReviews
 
 } from '../reducers/products'
-=======
-import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
+
 import { updateOrder, addNewOrder } from '../reducers/order'
->>>>>>> 871050f865225054602645f591d94a80433e47b8
+
 
 /*-----------------COMPONENT------------------*/
 
@@ -105,12 +103,9 @@ function mapStateToProps(state) {
   return {
     similarProducts: state.products.similarProducts,
     selectedProduct: state.products.selectedProduct,
-<<<<<<< HEAD
-    reviews: state.products.selectedProductReviews
-=======
+    reviews: state.products.selectedProductReviews,
     selectedOrder: state.orders.selectedOrder,
     selectedOrderDetails: state.orders.selectedOrderDetails
->>>>>>> 871050f865225054602645f591d94a80433e47b8
   }
 }
 
@@ -123,17 +118,14 @@ function mapDispatchToProps(dispatch) {
     },
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
-<<<<<<< HEAD
       dispatch(receiveSimilarProducts(productId))
       dispatch(receiveProductReviews(productId))
-=======
     },
     addNewOrder: () => {
       dispatch(addNewOrder())
     },
     updateOrder: (orderObj) => {
       dispatch(updateOrder(orderObj))
->>>>>>> 871050f865225054602645f591d94a80433e47b8
     }
   }
 }

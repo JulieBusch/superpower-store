@@ -5,18 +5,15 @@ import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
-import Jokes from './components/Jokes'
 
 import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import Cart from './components/Cart'
-
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
 
-<<<<<<< HEAD
 import {
   receiveAllProducts,
   receiveSingleProduct,
@@ -24,11 +21,8 @@ import {
   receiveProductReviews,
   clearSelectedProduct
   } from './reducers/products'
-=======
-import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts } from './reducers/products'
-import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
 
->>>>>>> 871050f865225054602645f591d94a80433e47b8
+import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -57,12 +51,9 @@ const onUserpageEnter = (nextRouterState) => {
   //load order history
 }
 
-<<<<<<< HEAD
+
 const onProductsEnter =(nextRouterState) => {
   store.dispatch(clearSelectedProduct())
-=======
-const onProductsEnter = (nextRouterState) => {
->>>>>>> 871050f865225054602645f591d94a80433e47b8
   store.dispatch(receiveAllProducts())
 }
 
@@ -93,11 +84,8 @@ render (
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/products/:id" component={SingleProduct} onEnter={onSingleItemEnter} />
         <Route path="/success" component={Success} />
-<<<<<<< HEAD
         <Route path="/review" component={ReviewForm} />
-=======
         <Route path="/cart" component={Cart} onEnter={onCartEnter}/>
->>>>>>> 871050f865225054602645f591d94a80433e47b8
       </Route>
     </Router>
   </Provider>,

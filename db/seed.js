@@ -8,15 +8,14 @@ const seedUsers = () => db.Promise.map([
   {name: 'Dennis Hoey', email: 'dennis@example.com', password: '1234'},
 ], user => db.model('users').create(user))
 
-<<<<<<< HEAD
+
 const seedReviews = () => db.Promise.map(reviewsArr, review => db.model('reviews').create(review))
-=======
+
 const seedOrders = () => db.Promise.map([
   {user_id: 1, status: 'open'},
   {user_id: 1, status: 'completed'},
   {user_id: 2, status: 'shipping'}
 ], order => db.model('orders').create(order))
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 
 const seedProducts = () => db.Promise.map(productsArr, product => db.model('products').create(product))
 
@@ -175,7 +174,6 @@ const productsArr = [
   }
 ]
 
-<<<<<<< HEAD
 const reviewsArr = [
   {
     rating: 4,
@@ -196,13 +194,13 @@ const reviewsArr = [
     product_id: 2
   },
 ]
-=======
+
 const seedOrderlines = () => db.Promise.map([
   {order_id: 3, product_id: 2, quantity: 3},
   {order_id: 1, product_id: 4, quantity: 1},
   {order_id: 2, product_id: 1, quantity: 1}
 ], orderline => db.model('orderlines').create(orderline))
->>>>>>> 871050f865225054602645f591d94a80433e47b8
+
 
 
 db.didSync
@@ -213,12 +211,9 @@ db.didSync
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
-<<<<<<< HEAD
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
-=======
   .then(seedOrderlines)
   .then(orderlines => console.log(`Seeded ${orderlines.length} orders OK`))
->>>>>>> 871050f865225054602645f591d94a80433e47b8
   .catch(error => console.error(error))
   .finally(() => db.close())
