@@ -66,13 +66,15 @@ export class SingleProduct extends React.Component {
           </div>
         </div>
         <div>
-          <Link to="/review">Leave a Review of This Power</Link>
+          { this.props.currentUser ?
+          <Link to="/review">Leave a Review of This Power</Link> :
+          <Link to='signup'>Sign in to leave a review</Link> }
         </div>
         <div className="item-reviews column-2">
           {this.props.reviews.slice(0, 3).map((review) => {
             return (
               <div key={review.id} className="item-reviews">
-                <h5>{review.user.name}</h5>
+                <h5>{review.user ? review.user.name : 'anonymous'}</h5>
                 <StarRatingComponent name="product-rating" value={review.rating} editing={false} className="stars"/>
               <div>
                 <span>{review.text}</span>

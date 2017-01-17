@@ -52,7 +52,7 @@ const onUserpageEnter = (nextRouterState) => {
 }
 
 
-const onProductsEnter =(nextRouterState) => {
+const onProductsEnter = (nextRouterState) => {
   store.dispatch(clearSelectedProduct())
   store.dispatch(receiveAllProducts())
 }
@@ -73,7 +73,7 @@ const onSingleItemEnter = (nextRouterState) => {
   store.dispatch(receiveProductReviews(productId))
 }
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={ExampleApp} onEnter={onAppEnter}>
