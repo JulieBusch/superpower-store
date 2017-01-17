@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
+import { updateOrder, addNewOrder } from '../reducers/order'
 
 /*-----------------COMPONENT------------------*/
 
@@ -22,6 +23,13 @@ export class SingleProduct extends React.Component {
     this.props.setNewSelectedProduct(productId)
   }
 
+  handleAddItemToCart(productId) {
+    if (!this.props.selectedOrderDetails.length) {
+      this.props.addNewOrder()
+    }
+    this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
+  }
+
   render() {
     var selectedProduct = this.props.selectedProduct
     console.log("TAAAAAAGS ",selectedProduct.tags)
@@ -38,7 +46,7 @@ export class SingleProduct extends React.Component {
             <span>{selectedProduct.price}</span>
           </div>
           <div className="column-2">
-            <button className="product-view-btns">Add to Cart</button>
+            <button className="product-view-btns" onClick={this.handleAddItemToCart.bind(this, selectedProduct.id)}>Add to Cart</button>
             <Link to="/cart">
               <button className="product-view-btns">Review Cart</button>
             </Link>
@@ -70,7 +78,9 @@ export class SingleProduct extends React.Component {
 function mapStateToProps(state) {
   return {
     similarProducts: state.products.similarProducts,
-    selectedProduct: state.products.selectedProduct
+    selectedProduct: state.products.selectedProduct,
+    selectedOrder: state.orders.selectedOrder,
+    selectedOrderDetails: state.orders.selectedOrderDetails
   }
 }
 
@@ -82,6 +92,12 @@ function mapDispatchToProps(dispatch) {
     },
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
+    },
+    addNewOrder: () => {
+      dispatch(addNewOrder())
+    },
+    updateOrder: (orderObj) => {
+      dispatch(updateOrder(orderObj))
     }
   }
 }

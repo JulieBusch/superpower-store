@@ -51,8 +51,11 @@ const onProductsEnter = (nextRouterState) => {
 }
 
 const onCartEnter = (nextRouterState) => {
+  store.dispatch(selectOrder(7))
+  .then(() => {
   const orderId = store.getState().orders.selectedOrder.id
   store.dispatch(selectOrderDetails(orderId))
+})
 }
 
 const onSingleItemEnter = (nextRouterState) => {

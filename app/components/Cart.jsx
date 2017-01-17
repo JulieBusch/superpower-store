@@ -19,7 +19,7 @@ class Cart extends React.Component {
     e.preventDefault()
     console.log(e.target.name)
 
-    this.props.deleteItem({ id: this.props.order.id, product_id: e.target.name})
+    this.props.deleteItem({ orderId: this.props.order.id, productId: e.target.name})
     // possibly render a quick 'deleted!' mesg
     //console.log('hey handleclick')
   }

@@ -88,6 +88,7 @@ export const selectOrder = (orderId) =>
       axios.get(`/api/orders/${orderId}`)
          .then(res => res.data)
          .then((foundOrder) => dispatch(selectedOrder(foundOrder)))
+
          .catch((failed) => dispatch(selectedOrder({})))
 
 export const selectOrderDetails = (orderId) =>
@@ -105,7 +106,10 @@ export const addNewOrder = () =>
    dispatch =>
       axios.post('/api/order/')
          .then(res => res.data)
-         .then(newOrder => dispatch(createdOrder(newOrder)))
+         .then(newOrder =>  {
+            dispatch(createdOrder(newOrder))
+            dispatch(selectedOrder(newOrder))
+         })
          .catch(failed => console.log(failed))
 
 
@@ -147,14 +151,15 @@ export const updateOrderUser = (order) =>
 
 export const updateOrder = (order) =>
    dispatch =>
-      axios.put(`/api/orders/${order.id}/product/${order.product_id}`)
+      axios.put(`/api/orders/${order.orderId}/product/${order.productId}`)
       .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
          .catch((failed) => console.log(failed))
 
 export const deleteProductFromOrder = (order) =>
    dispatch =>
-      axios.delete(`/api/orders/${order.id}/product/${order.product_id}`)
-         .then(() => dispatch(selectOrderDetails(order.id)))
+      axios.delete(`/api/orders/${order.orderId}/product/${order.productId}`)
+         .then(() => dispatch(selectOrderDetails(order.orderId)))
+         .then(() => dispatch(selectOrder(order.orderId)))
          .catch((failed) => console.log(failed))
 
 export default reducer
