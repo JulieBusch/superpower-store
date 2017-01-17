@@ -12,7 +12,7 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import Cart from './components/Cart'
-
+import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
 
 
@@ -52,12 +52,11 @@ const onProductsEnter = (nextRouterState) => {
 }
 
 const onCartEnter = (nextRouterState) => {
-
-  store.dispatch(selectOrder(7))
-  .then(() => {
+  //store.dispatch(selectOrder(7))
+  //.then(() => {
     const orderId = store.getState().orders.selectedOrder.id
     store.dispatch(selectOrderDetails(orderId))
-  })
+  //})
 }
 
 const onSingleItemEnter = (nextRouterState) => {
@@ -78,6 +77,7 @@ render (
         <Route path="/products/:id" component={SingleProduct} onEnter={onSingleItemEnter} />
         <Route path="/success" component={Success} />
         <Route path="/cart" component={Cart} onEnter={onCartEnter}/>
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,

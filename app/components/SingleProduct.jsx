@@ -24,10 +24,16 @@ export class SingleProduct extends React.Component {
   }
 
   handleAddItemToCart(productId) {
-    if (!this.props.selectedOrderDetails.length) {
-      this.props.addNewOrder()
+    if (!this.props.selectedOrder.id) {
+      console.log('productid ', productId)
+       this.props.addNewOrder(productId)
+      // .then( () => {
+      //    this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
+      // })
     }
+    else {
     this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
+    }
   }
 
   render() {
@@ -102,8 +108,8 @@ function mapDispatchToProps(dispatch) {
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
     },
-    addNewOrder: () => {
-      dispatch(addNewOrder())
+    addNewOrder: (productId) => {
+      dispatch(addNewOrder(productId))
     },
     updateOrder: (orderObj) => {
       dispatch(updateOrder(orderObj))
