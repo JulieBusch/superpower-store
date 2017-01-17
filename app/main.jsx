@@ -12,7 +12,7 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import SingleProduct from './components/SingleProduct'
-import Review from './components/Review'
+import ReviewForm from './components/ReviewForm'
 
 import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts, receiveProductReviews } from './reducers/products'
 import Success from './components/Success'
@@ -62,7 +62,7 @@ render (
         <Route path="/products" component={Products} onEnter={onProductsEnter} />
         <Route path="/products/:id" component={SingleProduct} onEnter={onSingleItemEnter} />
         <Route path="/success" component={Success} />
-        <Route path="/review" component={Review} />
+        <Route path="/review" component={ReviewForm} />
       </Route>
     </Router>
   </Provider>,

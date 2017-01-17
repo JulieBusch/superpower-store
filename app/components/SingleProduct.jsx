@@ -4,7 +4,17 @@ import {Link} from 'react-router'
 
 import StarRatingComponent from 'react-star-rating-component';
 
-import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts, clearProductReviews } from '../reducers/products'
+import {
+
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews,
+
+  clearSelectedProduct,
+  clearSimilarProducts,
+  clearProductReviews
+
+} from '../reducers/products'
 
 /*-----------------COMPONENT------------------*/
 
@@ -26,7 +36,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     var selectedProduct = this.props.selectedProduct
-    return(
+    return (
       <div className="popUp">
         <div className="column-2">
           <Link to="#" onClick={this.handleCloseClick} >Close</Link>
@@ -74,11 +84,7 @@ export class SingleProduct extends React.Component {
         </div>
       </div>
     )
-
   }
-
-
-
 }
 
 /*-----------------CONTAINER------------------*/
@@ -100,6 +106,8 @@ function mapDispatchToProps(dispatch) {
     },
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
+      dispatch(receiveSimilarProducts(productId))
+      dispatch(receiveProductReviews(productId))
     }
   }
 }

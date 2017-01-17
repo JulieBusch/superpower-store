@@ -34,10 +34,11 @@ export class Review extends React.Component {
       user_id: this.props.user.id,
       product_id: this.props.product.id
     }
-    axios.post(`api/users/${this.props.user.id}/addReview`, body)
+    axios.post(`api/users/${this.props.user.id}/review`, body)
     .then(res => res.data)
     .then(review => console.log(review))
     .catch(err => console.log(err))
+
     this.setState({
       rating: 0,
       text: ""
@@ -45,7 +46,9 @@ export class Review extends React.Component {
   }
 
   handleChange(evt) {
-    this.state.text = evt.target["review-text"]
+    console.log(this.state.text)
+    this.state.text = evt.target.value
+
   }
 
   render() {
@@ -58,8 +61,13 @@ export class Review extends React.Component {
         <span>Your Rating:</span>
         <StarRatingComponent name="rating" onStarClick={this.onStarClick} />
         <form onSubmit={this.formSubmission} >
-          <textarea name="review-text" placeholder="Write your review here" rows="10" cols="75" onChange={this.handleChange}>
-          </textarea>
+          <textarea
+            name="text"
+            placeholder="Write your review here"
+            rows="10"
+            cols="75"
+            onChange={this.handleChange}
+          />
           <button type="submit" className="submit-btn"> Submit </button>
         </form>
       </div>

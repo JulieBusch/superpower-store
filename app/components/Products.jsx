@@ -4,14 +4,17 @@ import {Link} from 'react-router'
 import Splash from './Splash'
 import SingleProduct from './SingleProduct'
 
-import {receiveSingleProduct, receiveSimilarProducts, receiveProductReviews} from '../reducers/products'
+import {
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews
+} from '../reducers/products'
 
 
 export class Products extends Component {
 
   constructor(props) {
     super(props)
-
     // this.handleClick = this.handleClick.bind(this)
   }
 
@@ -23,7 +26,7 @@ export class Products extends Component {
   render() {
 
     var productDivs = this.props.products.map((product) => {
-          return(
+          return (
             <div key={product.id} className="column-3 catalog-tile">
               <h4>{product.name}</h4>
               <div className="product-thumbnail">
@@ -35,7 +38,7 @@ export class Products extends Component {
           )
       });
 
-    return(
+    return (
       <div>
         <Splash />
   	    <div className="container catalog">
@@ -54,7 +57,8 @@ const mapStateToProps = (state) => {
   return {
     products: state.products.products,
     similarProducts: state.products.similarProducts,
-    selectedProduct: state.products.selectedProduct
+    selectedProduct: state.products.selectedProduct,
+    selectedProductReviews: state.products.selectedProductReviews
   }
 }
 

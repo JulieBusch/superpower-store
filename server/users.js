@@ -18,8 +18,6 @@ module.exports = require('express').Router()
 		.then(user => res.status(201).json(user))
 		.catch(next))
 
-
-
 	.get('/:id', mustBeLoggedIn, (req, res, next) =>
 		User.findById(req.params.id)
 		.then(user => res.json(user))
@@ -33,11 +31,11 @@ module.exports = require('express').Router()
     })
     .then(reviews => res.send(reviews))
     .catch(next)
+  })
 
-  .post('/:id/addReview', function(req, res, next) {
+  .post('/:id/review', function(req, res, next) {
     Review.create(req.body)
     .then(review => res.send("review saved successfully"))
     .catch(next)
   })
 
-});
