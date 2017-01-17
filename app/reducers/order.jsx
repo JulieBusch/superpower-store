@@ -159,7 +159,11 @@ export const deleteProductFromOrder = (order) =>
    dispatch =>
       axios.delete(`/api/orders/${order.orderId}/product/${order.productId}`)
          .then(() => dispatch(selectOrderDetails(order.orderId)))
-         .then(() => dispatch(selectOrder(order.orderId)))
+         .then(() => {
+            console.log('DISPATCHING!  ')
+            dispatch(selectOrder(order.orderId))
+
+         })
          .catch((failed) => console.log(failed))
 
 export default reducer
