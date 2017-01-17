@@ -5,8 +5,11 @@ import {Link} from 'react-router'
 import Splash from './Splash'
 import SingleProduct from './SingleProduct'
 
-
-import {receiveSingleProduct, receiveSimilarProducts} from '../reducers/products'
+import {
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews
+} from '../reducers/products'
 
 
 export class Products extends Component {
@@ -24,6 +27,7 @@ export class Products extends Component {
   render() {
 
     var productDivs = this.props.products.map((product) => {
+
       return (
         <div key={product.id} className="column-3 catalog-tile">
           <h4>{product.name}</h4>
@@ -35,6 +39,7 @@ export class Products extends Component {
         </div>
       )
     })
+
 
     return (
       <div>
@@ -56,7 +61,8 @@ const mapStateToProps = state => {
   return {
     products: state.products.products,
     similarProducts: state.products.similarProducts,
-    selectedProduct: state.products.selectedProduct
+    selectedProduct: state.products.selectedProduct,
+    selectedProductReviews: state.products.selectedProductReviews
   }
 }
 
@@ -65,6 +71,7 @@ const mapDispatchToProps = dispatch => {
     selectProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
       dispatch(receiveSimilarProducts(productId))
+      dispatch(receiveProductReviews(productId))
     }
   }
 }

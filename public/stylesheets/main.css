@@ -449,6 +449,7 @@ log-out-btn*/
 .product-thumbnail img {
   border-radius: 50%; }
 
+
 .similar-items {
   display: flex;
   flex-wrap: wrap;
@@ -457,6 +458,15 @@ log-out-btn*/
 .similar-thumbnail img {
   border-radius: 50%;
   max-width: 100%; }
+
+.reviews {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .reviews form {
+    display: flex; }
+
 
 .signin-container {
   margin-top: 100px; }

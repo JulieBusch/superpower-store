@@ -2,8 +2,22 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
-import { receiveSingleProduct, clearSelectedProduct, clearSimilarProducts } from '../reducers/products'
+import StarRatingComponent from 'react-star-rating-component';
+
+import {
+
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews,
+
+  clearSelectedProduct,
+  clearSimilarProducts,
+  clearProductReviews
+
+} from '../reducers/products'
+
 import { updateOrder, addNewOrder } from '../reducers/order'
+
 
 /*-----------------COMPONENT------------------*/
 
@@ -67,7 +81,25 @@ export class SingleProduct extends React.Component {
 
         </div>
 
-        <div className="similar-items column-2">
+        <div>
+          { this.props.currentUser ?
+          <Link to="/review">Leave a Review of This Power</Link> :
+          <Link to='signup'>Sign in to leave a review</Link> }
+        </div>
+        <div className="item-reviews column-2">
+          {this.props.reviews.slice(0, 3).map((review) => {
+            return (
+              <div key={review.id} className="item-reviews">
+                <h5>{review.user ? review.user.name : 'anonymous'}</h5>
+                <StarRatingComponent name="product-rating" value={review.rating} editing={false} className="stars"/>
+              <div>
+                <span>{review.text}</span>
+              </div>
+            </div>)
+          })}
+        </div>
+        <div className="similar-items">
+
           {this.props.similarProducts.slice(0, 5).map((product) => {
             return (<div key={product.id} className="column-5 similar-tile">
               <h4>{product.name}</h4>
@@ -81,11 +113,7 @@ export class SingleProduct extends React.Component {
         </div>
       </div>
     )
-
   }
-
-
-
 }
 
 /*-----------------CONTAINER------------------*/
@@ -94,6 +122,7 @@ function mapStateToProps(state) {
   return {
     similarProducts: state.products.similarProducts,
     selectedProduct: state.products.selectedProduct,
+    reviews: state.products.selectedProductReviews,
     selectedOrder: state.orders.selectedOrder,
     selectedOrderDetails: state.orders.selectedOrderDetails
   }
@@ -104,9 +133,12 @@ function mapDispatchToProps(dispatch) {
     clearDetailView: () => {
       dispatch(clearSelectedProduct())
       dispatch(clearSimilarProducts())
+      dispatch(clearProductReviews())
     },
     setNewSelectedProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
+      dispatch(receiveSimilarProducts(productId))
+      dispatch(receiveProductReviews(productId))
     },
     addNewOrder: (productId) => {
       dispatch(addNewOrder(productId))
