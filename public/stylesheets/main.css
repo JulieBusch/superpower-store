@@ -471,14 +471,20 @@ log-out-btn*/
 
 .cart-column-2 {
   display: flex;
-  width: 48%;
+  width: 65%;
   text-align: center;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-around; }
 
 .cart-column-4 {
   display: flex;
   width: 22%;
+  text-align: center;
+  align-items: center; }
+
+.cart-column-delete {
+  display: flex;
+  width: 10%;
   text-align: center;
   align-items: center; }
 
@@ -495,5 +501,14 @@ log-out-btn*/
   text-align: right; }
 
 .cart-total-column {
-  width: 75%;
+  width: 83%;
   text-align: right; }
+
+#checkout-btn {
+  padding: 9px;
+  border-radius: 5px;
+  border: none;
+  background-color: #7AA7EF; }
+
+#checkout-btn:hover {
+  background-color: #4489f7; }

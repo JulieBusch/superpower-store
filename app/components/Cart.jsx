@@ -50,12 +50,12 @@ class Cart extends React.Component {
           </div>
 
           <div className="cart-column-2">
-            <h3>price: {convertNum(item.price)}</h3>
-            <h3>quantity: {item.orderlines.quantity}</h3>
-            <h3>subtotal: {convertNum(item.orderlines.subtotal + ".00")}</h3>
+            <h4>price: {convertNum(item.price)}</h4>
+            <h4>quantity: {item.orderlines.quantity}</h4>
+            <h4>subtotal: {convertNum(item.orderlines.subtotal + ".00")}</h4>
           </div>
 
-          <div className="cart-column-4">
+          <div className="cart-column-delete">
             <img className="delete-cart-item" src={'/70287.png'} name={item.id} onClick={this.handleClick} />
           </div>
         </div>
@@ -71,11 +71,11 @@ class Cart extends React.Component {
         {orderDivs}
         <div className="cart-total-column">
           <div className="total">
-            Total: {this.props.order.total}
+            <h3>Total: {this.props.order.total}</h3>
           </div>
           <div className="total">
             <Link to="/checkout">
-            Checkout
+            <button type="submit" id="checkout-btn">Checkout</button>
             </Link>
           </div>
         </div>
