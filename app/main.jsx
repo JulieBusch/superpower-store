@@ -12,10 +12,13 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import Cart from './components/Cart'
+
 import SingleProduct from './components/SingleProduct'
 
 
 import { receiveAllProducts, receiveSingleProduct, receiveSimilarProducts } from './reducers/products'
+import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
+
 import Success from './components/Success'
 
 import { selectUser, getAllUsers } from './reducers/user'
@@ -39,15 +42,22 @@ const onAppEnter = () => {
 const onUserpageEnter = (nextRouterState) => {
   const userId = nextRouterState.params.id;
   store.dispatch(selectUser(userId))
+  //find user's open order
+  store.dispatch(getOpenOrderByUserId(userId))
+  //load order history
 }
 
-const onProductsEnter =(nextRouterState) => {
+const onProductsEnter = (nextRouterState) => {
   store.dispatch(receiveAllProducts())
 }
 
 const onCartEnter = (nextRouterState) => {
-  // fill this out with proper dispatcher that gets everything from cart in order model
-  //store.dispatch(receiveWorkingOrder())
+
+  store.dispatch(selectOrder(7))
+  .then(() => {
+    const orderId = store.getState().orders.selectedOrder.id
+    store.dispatch(selectOrderDetails(orderId))
+  })
 }
 
 const onSingleItemEnter = (nextRouterState) => {

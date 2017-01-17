@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router'
+import { deleteProductFromOrder } from '../reducers/order'
 
 
 /* -----------------    COMPONENT     ------------------ */
@@ -9,54 +10,61 @@ class Cart extends React.Component {
 
   constructor(props){
     super(props)
-    // this.orderDivs = this.orderDivs.bind(this)
+
+    this.handleClick = this.handleClick.bind(this)
+
   }
 
-  handleClick(item){
+  handleClick(e) {
+    e.preventDefault()
+    console.log(e.target.name)
+
+    this.props.deleteItem({ orderId: this.props.order.id, productId: e.target.name})
     // possibly render a quick 'deleted!' mesg
-    console.log(item)
-    // this.props.ACTIONCREATOR()
+    //console.log('hey handleclick')
   }
 
   render() {
 
-    // This is supposed to go through each order line from complete order and generate appropriate div for each of them
 
-    // var orderDivs = this.props.order.map(function(item){
-    //   return (
-    //     <div key={item.id}>
-    //       <div className="nav-left">
-    //         <div className="item-thumbnail"><img src={item.thumbnail} /></div>
-    //         <h4>{item.name}</h4>
-    //       </div>
+    var orderDivs = this.props.orderDetails.map((item) => {
+      return (
 
-    //       <div className="nav-right">
-    //         <h3>{item.price}</h3>
-    //         <img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
-    //       </div>
-    //     </div>
-    //     )
-    // })
+        <div key={item.id}>
+
+          <div className="nav-left">
+            <div className="item-thumbnail"><img src={item.thumbnail} /></div>
+            <h4>{item.name}</h4>
+          </div>
+
+          <div className="nav-right">
+            <h3>price: {item.price}</h3>
+            <h3>quantity: {item.orderlines.quantity}</h3>
+            <h3>subtotal: {item.orderlines.subtotal}</h3>
+
+            <img src={'/70287.png'} name={item.id} onClick={this.handleClick} />
+
+          </div>
+        </div>
+        )
+    })
 
     return (
-      <div className="container cart">
+      <div className="container">
         <h1> Your Cart </h1>
-        {
-        //orderDivs
-        }
-        <h2> ORDERS ARE GOING HERE </h2>
 
+            {!this.props.orderDetails.length && <div>Your shopping cart is empty!</div>}
+
+        {orderDivs}
         <div>
-          Total: {/*this.total(this.props.order)*/}
+          Total: {this.props.order.total}
         </div>
-
         <div>
-
           <Link to="/checkout">
-            <btn>Checkout</btn>
+          Checkout
           </Link>
-
         </div>
+
 
       </div>
     )
@@ -65,18 +73,23 @@ class Cart extends React.Component {
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapStateToProps = () => {
+
+const mapStateToProps = (state) => {
   return ({
-    // order: state.
+    selectedUser: state.user.selectedUser,
+    order: state.orders.selectedOrder,
+    orderDetails: state.orders.selectedOrderDetails
+
   })
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-
+    deleteItem: (orderObj) => {
+      dispatch(deleteProductFromOrder(orderObj))
+    }
   }
-  // function that deletes an item from the order
-  // function that subtotals the order(??)
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
