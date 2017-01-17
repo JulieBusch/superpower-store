@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router'
+import { deleteProductFromOrder } from '../reducers/order'
 
 
 /* -----------------    COMPONENT     ------------------ */
@@ -10,20 +11,23 @@ class Cart extends React.Component {
   constructor(props){
     super(props)
 
-    //this.orderDivs = this.orderDivs.bind(this)
+    this.handleClick = this.handleClick.bind(this)
 
   }
 
-  // handleClick(item){
-  //   // possibly render a quick 'deleted!' mesg
-  //   console.log(item)
-  //   // this.props.ACTIONCREATOR()
-  // }
+  handleClick(e) {
+    e.preventDefault()
+    console.log(e.target.name)
+
+    this.props.deleteItem({ id: this.props.order.id, product_id: e.target.name})
+    // possibly render a quick 'deleted!' mesg
+    //console.log('hey handleclick')
+  }
 
   render() {
 
 
-    var orderDivs = this.props.orderDetails.map(function(item){
+    var orderDivs = this.props.orderDetails.map((item) => {
       return (
 
         <div key={item.id}>
@@ -37,8 +41,9 @@ class Cart extends React.Component {
             <h3>price: {item.price}</h3>
             <h3>quantity: {item.orderlines.quantity}</h3>
             <h3>subtotal: {item.orderlines.subtotal}</h3>
-            {//<img src={'/70287.png'} onClick={this.handleClick.bind(this, item)}/>
-          }
+
+            <img src={'/70287.png'} name={item.id} onClick={this.handleClick} />
+
           </div>
         </div>
         )
@@ -79,12 +84,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteItem: (orderObj) => {
+      dispatch(deleteProductFromOrder(orderObj))
+    }
+  }
 
-  return ({})
-  // return
-
-  // function that deletes an item from the order
-  // function that subtotals the order(??)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

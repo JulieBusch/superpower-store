@@ -24,17 +24,7 @@ const Orderline = db.define('orderlines', {
         return parseFloat(result.toFixed(2));
       } else return '';
     }
-  },
-  // hooks: {
-  //   beforeCreate: function(orderlines) {
-  //     return Product.findById(orderlines.product_id)
-  //     .then((foundProduct) => {
-  //       orderlines.itemPrice = foundProduct.price
-  //       return orderlines
-  //     })
-  //     .catch(err => console.log('ERRRR ', err))
-  //   },
-  // }
+  }
 })
 
 module.exports = Orderline

@@ -131,9 +131,10 @@ router.put('/:orderId/product/:productId', function(req, res, next) {
 
 // remove item from order
 router.delete('/:orderId/product/:productId', function(req, res, next) {
-  req.order.removeProduct(req.product)
+  return req.order.removeProduct(req.product)
   .then(() => {
-    res.sendStatus(200)
+    req.order.save()
+    res.send("Item deleted.")
   })
 })
 

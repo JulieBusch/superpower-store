@@ -53,7 +53,7 @@ const onCartEnter = (nextRouterState) => {
   // if (user.length) {
   //   store.dispatch(getOpenOrderByUserId(user.id))
   // }
-  store.dispatch(selectOrder(4))
+  store.dispatch(selectOrder(7))
   .then( () => {
   const orderId = store.getState().orders.selectedOrder.id
   store.dispatch(selectOrderDetails(orderId))
