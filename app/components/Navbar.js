@@ -49,7 +49,7 @@ export class Navbar extends React.Component {
 
         <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>
 
-              {this.state.clicked && <div id="login"><Login /></div>}
+          {this.state.clicked && <div id="login"><Login /></div>}
 
       </div>
     )
@@ -61,7 +61,7 @@ export class Navbar extends React.Component {
     return (
       <div>
 
-        <Link to={`/user/${userId}`} className="nav-margins" activeClassName="active">My Account</Link>
+        <Link to={`/users/${userId}`} className="nav-margins" activeClassName="active">My Account</Link>
 
         <button
           className="log-out-btn nav-margins"

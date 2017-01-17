@@ -10,7 +10,9 @@
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w",
     "start": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "seed": "node db/seed.js",
-    "css-build": "node-sass app/sass/main.scss -o public/stylesheets"
+    "css": "node-sass app/sass/main.scss -o public/stylesheets",
+    "css-build": "node-sass -w app/sass/main.scss -o public/stylesheets"
+
   },
   "repository": {
     "type": "git",
@@ -43,10 +45,11 @@
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
     "pg-native": "^1.10.0",
-    "react": "^15.3.2",
+    "react": "^15.4.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
+    "react-star-rating-component": "^1.2.2",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
