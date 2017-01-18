@@ -12,7 +12,7 @@
     font-size: 50px; }
 
 .catalog {
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 100px; }
 
 .catalog-tile {
@@ -36,6 +36,10 @@
   .similar-thumbnail img {
     border-radius: 50%;
     max-width: 100%; }
+
+.close {
+  display: flex;
+  justify-content: flex-end; }
 
 .reviews {
   margin-top: 100px;

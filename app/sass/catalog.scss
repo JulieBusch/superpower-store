@@ -17,8 +17,10 @@
 }
 
 .catalog {
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 100px;
+  // padding-left: 50px;
+  // padding-right: 50px;
 }
 
 // .cart {
@@ -41,7 +43,6 @@
   }
 }
 
-
 .similar-items {
   display: flex;
   flex-wrap: wrap;
@@ -57,6 +58,10 @@
   }
 }
 
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
 
 .reviews {
   margin-top: 100px;
