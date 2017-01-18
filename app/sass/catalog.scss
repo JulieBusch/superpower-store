@@ -46,9 +46,11 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .similar-thumbnail {
+  border-radius: 50%;
   img {
     border-radius: 50%;
     max-width: 100%;
@@ -143,4 +145,15 @@
 
 .teleportation {
   background-color: yellow;
+}
+
+hr {
+  margin-top: 60px;
+  background-color: darkgray;
+  height: 3px;
+}
+
+.review-link {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
