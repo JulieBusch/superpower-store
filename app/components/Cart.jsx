@@ -51,7 +51,7 @@ class Cart extends React.Component {
         <div key={item.id} className="row">
 
           <div className="cart-column-4">
-            <div className="item-thumbnail"><img className="cart-thumbnail" src={item.thumbnail} /></div>
+            <div className="item-thumbnail"><img className="cart-thumbnail" src={`./thumbnails/${item.thumbnail}`} /></div>
             <h4>{item.name}</h4>
           </div>
 
