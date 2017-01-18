@@ -25,17 +25,19 @@ export class Products extends Component {
   render() {
 
     var productDivs = this.props.products.map((product) => {
-          return (
-            <div key={product.id} className="column-3 catalog-tile">
-              <h4>{product.name}</h4>
-              <div className="product-thumbnail">
-                <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
-                  <img src={product.thumbnail} />
-                </Link>
-              </div>
-            </div>
-          )
-      });
+
+      return (
+        <div key={product.id} className="column-3 catalog-tile">
+          <h4>{product.name}</h4>
+          <div className="product-thumbnail">
+            <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
+              <img src={product.thumbnail} />
+            </Link>
+          </div>
+        </div>
+      )
+    })
+
 
     return (
       <div>
@@ -52,7 +54,6 @@ export class Products extends Component {
 
 }
 
-/* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = state => {
   return {
@@ -74,3 +75,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
+

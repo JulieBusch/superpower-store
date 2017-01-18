@@ -38,10 +38,16 @@ export class SingleProduct extends React.Component {
   }
 
   handleAddItemToCart(productId) {
-    if (!this.props.selectedOrderDetails.length) {
-      this.props.addNewOrder()
+    if (!this.props.selectedOrder.id) {
+      console.log('productid ', productId)
+       this.props.addNewOrder(productId)
+      // .then( () => {
+      //    this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
+      // })
     }
+    else {
     this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
+    }
   }
 
   render() {
@@ -92,8 +98,8 @@ export class SingleProduct extends React.Component {
             </div>)
           })}
         </div>
-
         <div className="similar-items column-2">
+
           {this.props.similarProducts.slice(0, 5).map((product) => {
             return (<div key={product.id} className="column-5 similar-tile">
               <h4>{product.name}</h4>
@@ -134,8 +140,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(receiveSimilarProducts(productId))
       dispatch(receiveProductReviews(productId))
     },
-    addNewOrder: () => {
-      dispatch(addNewOrder())
+    addNewOrder: (productId) => {
+      dispatch(addNewOrder(productId))
     },
     updateOrder: (orderObj) => {
       dispatch(updateOrder(orderObj))

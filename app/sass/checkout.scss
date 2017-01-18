@@ -1,0 +1,91 @@
+.checkout-form {
+  display: flex;
+  width: 90%;
+  height: 100%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+/* add edit pages */
+.addedit_div {
+   width: 450px;
+}
+
+.form_div {
+   padding: 5% 8% 0% 8%;
+   background-color: #d9e5f7;
+   float: left;
+   width: 84%;
+}
+fieldset {
+   border: 1px double #CCCCCC;
+}
+label {
+   font-size: smaller;
+}
+input[type=text], textarea {
+   display: block;
+   box-sizing: border-box;
+   margin: .5em 1em .5em 0em;
+   border: 1px solid #AAAAAA;
+   border-radius: 3px;
+   width: 100%;
+   height: 2.5em;
+}
+
+input.name1 {
+   width: 97%;
+   display: inline-block;
+   margin: 0em .5em 1em 0em;
+}
+input.name {
+   width: 97%;
+   display: inline-block;
+   margin: 0em 0em 1em .5em;
+}
+.leftside_form_div, .rightside_form_div {
+   display: inline-block;
+   width: 50%;
+
+}
+.name_span1 {
+   font-size: x-small;
+   margin: 0em 0em 0em .2em;
+}
+.name_span {
+   font-size: x-small;
+   margin: 0em 0em 0em .8em;
+}
+
+
+.input_select {
+   display: inline-block;
+   box-sizing: border-box;
+   margin: 0em 0em 1em 0em;
+   border: 1px solid #AAAAAA;
+   height: 2.5em;
+   width: 97%;
+}
+
+.left {
+   float: left;
+}
+
+.right {
+   float: right;
+}
+
+.btn_submit {
+  padding: 9px;
+  border-radius: 5px;
+  border: none;
+  background-color: #7AA7EF;
+  margin: 4px;
+}
+
+.btn_submit:hover {
+  background-color: #4489f7;
+}
