@@ -1,3 +1,3 @@
-# GHA 1610 Grace Shopper project
+# GHA 1610 Grace Shopper project: Superpower Store
 
-live site found at: https://sheltered-taiga-91490.herokuapp.com/
+Deployment Link Here: https://sheltered-taiga-91490.herokuapp.com/
