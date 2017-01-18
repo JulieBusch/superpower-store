@@ -1,16 +1,16 @@
 nav {
   display: flex;
-  height: 80px;
+  height: 85px;
   width: 100%;
   position: fixed;
   top: 0;
   background:rgba(1,1,1,0.25);
   align-items: center;
-    .container {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .nav-left {
@@ -34,13 +34,16 @@ nav {
   font-size: 20px;
 }
 
-.log-out-btn {
-
+.login {
+  display: inline-flex;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  justify-content: flex-end;
 }
 
 a {
   text-decoration: none;
-
 }
 
 /*navbar-logo

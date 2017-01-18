@@ -84,7 +84,7 @@ export class SingleProduct extends React.Component {
         <div>
           { this.props.currentUser ?
           <Link to="/review">Leave a Review of This Power</Link> :
-          <Link to='signup'>Sign in to leave a review</Link> }
+          <Link to='/signup'>Sign up to leave a review</Link> }
         </div>
         <div className="item-reviews column-2">
           {this.props.reviews.slice(0, 3).map((review) => {
@@ -120,6 +120,7 @@ export class SingleProduct extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    currentUser: state.auth,
     similarProducts: state.products.similarProducts,
     selectedProduct: state.products.selectedProduct,
     reviews: state.products.selectedProductReviews,

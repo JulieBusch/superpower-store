@@ -1,10 +1,10 @@
 import React from 'react'
 
-// import {login} from 'APP/app/reducers/auth'
+import {login} from 'APP/app/reducers/auth'
 import {connect} from 'react-redux'
 import {logout as logOutUser} from '../reducers/auth'
 import {Link} from 'react-router'
-import Login from './Login'
+// import Login from './Login'
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -26,19 +26,47 @@ export class Navbar extends React.Component {
 
   render() {
     return (
-      <nav>
-        <div className="container">
-          <div className="nav-left">
-              <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
+      <div>
+        <nav>
+          <div className="container">
+            <div className="nav-left">
+                <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
 
-              <Link to="/products" className="nav-margins" >Products</Link>
+                <Link to="/products" className="nav-margins" >Products</Link>
+            </div>
+            <div className="nav-right">
+                <Link to="/cart" className="nav-margins">cart</Link>
+                { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
+            </div>
+
           </div>
-          <div className="nav-right">
-              <Link to="/cart" className="nav-margins">cart</Link>
-              { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
+        </nav>
+        {this.state.clicked &&
+          <div className="login">
+            <form onSubmit={evt => {
+              evt.preventDefault()
+              login(
+                evt.target.username.value,
+                evt.target.password.value
+              )
+            }}>
+              <input
+                name="username"
+                placeholder="email"
+              />
+              <input
+                name="password"
+                type="password"
+                placeholder="password"
+              />
+              <input
+                type="submit"
+                value="Login"
+              />
+            </form>
           </div>
-        </div>
-      </nav>
+        }
+      </div>
     )
   }
 
@@ -48,9 +76,7 @@ export class Navbar extends React.Component {
 
         <Link to="/signup" className="nav-margins" activeClassName="active">signup</Link>
 
-        <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>
-
-          {this.state.clicked && <div id="login"><Login /></div>}
+        <Link className="nav-margins" onClick={this.handleClick}>login</Link>
 
       </div>
     )
