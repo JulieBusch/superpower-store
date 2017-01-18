@@ -89,7 +89,7 @@ export const selectOrder = (orderId) =>
          .then(res => res.data)
          .then((foundOrder) => dispatch(selectedOrder(foundOrder)))
 
-         .catch((failed) => dispatch(selectedOrder({})))
+         .catch((failed) => console.log(failed))
 
 export const selectOrderDetails = (orderId) =>
    dispatch => {
@@ -97,7 +97,7 @@ export const selectOrderDetails = (orderId) =>
          .then(res => {
             return   res.data})
          .then((foundOrderDetails) => dispatch(selectedOrderDetails(foundOrderDetails)))
-         .catch((failed) => dispatch(selectedOrderDetails([])))
+         .catch((failed) => console.log(failed))
       }
 
 // export const addNewOrder = () =>
