@@ -70,11 +70,13 @@ export class SingleProduct extends React.Component {
         <div className="row">
 
           <div className={`column-2 product-thumbnail ${imgClass}`}>
-            <Link to="#" onClick={this.handleCloseClick} >Close</Link>
-            <img src={`./thumbnails/${selectedProduct.thumbnail}`} />
+            <div>
+              <img src={`./thumbnails/${selectedProduct.thumbnail}`} />
+            </div>
           </div>
 
           <div className="column-2">
+            <Link to="#" className="close" onClick={this.handleCloseClick} >X</Link>
             <h2>{selectedProduct.name}</h2>
             <p>{selectedProduct.description}</p>
 

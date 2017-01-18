@@ -22,6 +22,7 @@ render() {
 
             name: <h2>{this.props.user.name}</h2>
             email: <h3>{this.props.user.email}</h3>
+            order history:
 
           </div>
           )
