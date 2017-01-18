@@ -23,33 +23,14 @@ const productsArr = [
 	{
 	  name: 'Flight',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-<<<<<<< HEAD
-	  description: 'hkjdhkjh',
-	  price: 12.00,
-	  tags: ["cool", "awesome"],
-=======
 	  description: 'Soar as high as you dare. No mechanical augmentation is required for our flight power; simply float freely at will. Maximum attainable speed while flying is 20mph. Flight speed can increase when Flight is combined with Super Speed.',
 	  price: 1200000.00,
 	  tags: ['natural non-human abilities', 'flight'],
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
 	  name: 'Ethical X-ray Vision',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-<<<<<<< HEAD
-	  description: 'hkjdhkjh',
-	  price: 12.00,
-	  tags: ["lame", "ethical"],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
-	},
-	{
-	  name: 'Magnanimity',
-	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-	  description: 'hkjdhkjh',
-	  price: 12.00,
-	  tags: ["awesome", "ethical"],
-=======
 	  description: 'Ethical X-ray Vision gives you the ability to see through solid objects without compromising as much of your fellow citizens\' privacy. Our leading engineers have developed X-ray vision powers that will not reveal the nude body of another person if it is shielded by clothing or other barriers, but will not interfere with normal human vision when a person willingly disrobes in your presence. Your neighbors will appreciate knowing that their dignity remains intact.',
 	  price: 850000.00,
 	  tags: ['not of this world', 'ethical'],
@@ -61,19 +42,11 @@ const productsArr = [
 	  description: 'Super Speed will enable you to not only run faster than imaginable, but will give you the power to quicken any movement you desire. React to any situation in the blink of an eye. Maximum attainable speed is 227mph. Combine with Flight and experience the thrill of a peregrin falcon\'s dive.',
 	  price: 1050000.00,
 	  tags: ['enhanced human capabilities', 'speed', 'transportation'],
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
 	  name: 'Telekinesis',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-<<<<<<< HEAD
-	  description: 'hkjdhkjh',
-	  price: 12.00,
-	  tags: ["awesome", "dangerous"],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
-	}
-=======
 	  description: 'Move physical objects with only a thought. Initially you will be able to move items up to 15 lbs. for approximately 10 seconds at a time. Our telekinesis strengthens with practice; you will find yourself able to move heavier objects and hold them in the air for longer periods as you exercise your new powers.',
 	  price: 1350000.00,
 	  tags: ['mind powers', 'not of this world'],
@@ -199,7 +172,7 @@ const productsArr = [
     tags: ['not of this world', 'transportation'],
     thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
   }
->>>>>>> 871050f865225054602645f591d94a80433e47b8
+
 ]
 
 const reviewsArr = [
@@ -221,6 +194,7 @@ const reviewsArr = [
     user_id: 5,
     product_id: 2
   },
+
 ]
 
 const seedOrderlines = () => db.Promise.map([
@@ -239,15 +213,9 @@ db.didSync
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
->>>>>>> e0179fd6bdd54262859181643021733bd365b970
   .then(seedOrderlines)
   .then(orderlines => console.log(`Seeded ${orderlines.length} orders OK`))
->>>>>>> 871050f865225054602645f591d94a80433e47b8
   .catch(error => console.error(error))
   .finally(() => db.close())

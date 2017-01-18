@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .catalog {
   justify-content: space-between; }
 =======
+=======
+>>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
 .splash {
   height: 100vh;
   display: flex;
@@ -19,18 +22,13 @@
   justify-content: space-between;
   margin-top: 100px; }
 
-.cart {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
-
 .catalog-tile {
   margin-top: 50px;
   margin-bottom: 50px; }
 
 .product-thumbnail img {
   border-radius: 50%; }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 871050f865225054602645f591d94a80433e47b8
 =======
@@ -43,3 +41,14 @@
   .reviews form {
     display: flex; }
 >>>>>>> e0179fd6bdd54262859181643021733bd365b970
+=======
+
+.similar-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.similar-thumbnail img {
+  border-radius: 50%;
+  max-width: 100%; }
+>>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff

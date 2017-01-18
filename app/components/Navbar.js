@@ -30,18 +30,10 @@ export class Navbar extends React.Component {
         <div className="container">
           <div className="nav-left">
               <Link className="nav-margins" to="/"><img src="/logo-test.png" /></Link>
-
-<<<<<<< HEAD
-              <Link to="/products" className="nav-margins" activeClassName="active">Products</Link>
-          </div>
-          <div className="nav-right">
-              <Link to="/cart" className="nav-margins"><img src="/cart.png" /></Link>
-=======
               <Link to="/products" className="nav-margins" >Products</Link>
           </div>
           <div className="nav-right">
               <Link to="/cart" className="nav-margins">cart</Link>
->>>>>>> 871050f865225054602645f591d94a80433e47b8
               { this.props.currentUser ? this.renderLoggedIn() : this.renderLoginSignup() }
           </div>
         </div>
@@ -51,11 +43,8 @@ export class Navbar extends React.Component {
 
   renderLoginSignup() {
     return (
-<<<<<<< HEAD
-      <div>
-=======
       <div className="login-signup">
->>>>>>> 871050f865225054602645f591d94a80433e47b8
+
         <Link to="/signup" className="nav-margins" activeClassName="active">signup</Link>
 
         <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>

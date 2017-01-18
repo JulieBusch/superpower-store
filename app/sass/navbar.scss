@@ -4,6 +4,7 @@ nav {
   width: 100%;
   position: fixed;
   top: 0;
+  background:rgba(1,1,1,0.25);
   align-items: center;
     .container {
       flex-direction: row;
@@ -29,25 +30,18 @@ nav {
 .nav-margins {
   margin-left: 10px;
   margin-right: 10px;
-<<<<<<< HEAD
-=======
   color: white;
   font-size: 20px;
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 }
 
 .log-out-btn {
 
 }
 
-<<<<<<< HEAD
-=======
 a {
   text-decoration: none;
-
 }
 
->>>>>>> 871050f865225054602645f591d94a80433e47b8
 /*navbar-logo
 navbar-brand
 cart-icon

@@ -48,23 +48,33 @@ export class SingleProduct extends React.Component {
     var selectedProduct = this.props.selectedProduct
     return (
       <div className="popUp">
-        <div className="column-2">
-          <Link to="#" onClick={this.handleCloseClick} >Close</Link>
-          <img src={selectedProduct.image} />
-        </div>
-        <div className="column-2">
-          <h2>{selectedProduct.name}</h2>
-          <p>{selectedProduct.description}</p>
+        <div className="row">
+
           <div className="column-2">
-            <span>{selectedProduct.price}</span>
+            <Link to="#" onClick={this.handleCloseClick} >Close</Link>
+            <img src={selectedProduct.image} />
           </div>
+
           <div className="column-2">
-            <button className="product-view-btns" onClick={this.handleAddItemToCart.bind(this, selectedProduct.id)}>Add to Cart</button>
-            <Link to="/cart">
-              <button className="product-view-btns">Review Cart</button>
-            </Link>
+            <h2>{selectedProduct.name}</h2>
+            <p>{selectedProduct.description}</p>
+
+            <div className="row">
+              <div className="column-2">
+                <span>{selectedProduct.price}</span>
+              </div>
+              <div className="column-2">
+                <button className="product-view-btns" onClick={this.handleAddItemToCart.bind(this, selectedProduct.id)}>Add to Cart</button>
+                <Link to="/cart">
+                  <button className="product-view-btns">Review Cart</button>
+                </Link>
+              </div>
+            </div>
+
           </div>
+
         </div>
+
         <div>
           { this.props.currentUser ?
           <Link to="/review">Leave a Review of This Power</Link> :
@@ -82,11 +92,12 @@ export class SingleProduct extends React.Component {
             </div>)
           })}
         </div>
-        <div className="similar-items">
+
+        <div className="similar-items column-2">
           {this.props.similarProducts.slice(0, 5).map((product) => {
-            return (<div key={product.id} className="column-5 catalog-tile">
+            return (<div key={product.id} className="column-5 similar-tile">
               <h4>{product.name}</h4>
-              <div className="product-thumbnail">
+              <div className="similar-thumbnail">
                 <Link to='#' onClick={this.handleNewItemClick.bind(this, product.id)}>
                   <img src={product.thumbnail} />
                 </Link>
