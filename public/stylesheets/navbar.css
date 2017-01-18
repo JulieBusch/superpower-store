@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  height: 80px;
+  height: 85px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -28,6 +28,13 @@ nav {
   margin-right: 10px;
   color: white;
   font-size: 20px; }
+
+.login {
+  display: inline-flex;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  justify-content: flex-end; }
 
 a {
   text-decoration: none; }
