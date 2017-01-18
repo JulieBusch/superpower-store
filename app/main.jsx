@@ -14,8 +14,7 @@ import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
-
-import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
+import Success from './components/Success'
 
 import {
   receiveAllProducts,
@@ -24,10 +23,7 @@ import {
   receiveProductReviews,
   clearSelectedProduct
   } from './reducers/products'
-
 import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
-import Success from './components/Success'
-
 import { selectUser, getAllUsers } from './reducers/user'
 
 

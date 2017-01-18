@@ -22,7 +22,6 @@
 .product-thumbnail img {
   border-radius: 50%; }
 
-
 .similar-items {
   display: flex;
   flex-wrap: wrap;
@@ -39,4 +38,3 @@
   align-items: center; }
   .reviews form {
     display: flex; }
-
