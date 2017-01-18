@@ -4,13 +4,18 @@ import {Link} from 'react-router'
 import Splash from './Splash'
 import SingleProduct from './SingleProduct'
 
-import {receiveSingleProduct, receiveSimilarProducts} from '../reducers/products'
+import {
+  receiveSingleProduct,
+  receiveSimilarProducts,
+  receiveProductReviews
+} from '../reducers/products'
 
 
 export class Products extends Component {
 
   constructor(props) {
     super(props)
+<<<<<<< HEAD
 <<<<<<< HEAD
     this.splitIntoRows = this.splitIntoRows.bind(this)
   }
@@ -37,6 +42,8 @@ export class Products extends Component {
     return groupedArr;
 =======
 
+=======
+>>>>>>> e0179fd6bdd54262859181643021733bd365b970
     // this.handleClick = this.handleClick.bind(this)
   }
 
@@ -57,7 +64,7 @@ export class Products extends Component {
               <p>Price: ${product.price}</p>
 =======
     var productDivs = this.props.products.map((product) => {
-          return(
+          return (
             <div key={product.id} className="column-3 catalog-tile">
               <h4>{product.name}</h4>
               <div className="product-thumbnail">
@@ -70,12 +77,16 @@ export class Products extends Component {
           )
       });
 
+<<<<<<< HEAD
     return(
 <<<<<<< HEAD
 	   <div className="container catalog">
 		  {productDivs}
 	   </div>
 =======
+=======
+    return (
+>>>>>>> e0179fd6bdd54262859181643021733bd365b970
       <div>
         <Splash />
   	    <div className="container catalog">
@@ -98,7 +109,8 @@ const mapStateToProps = (state) => {
   return {
     products: state.products.products,
     similarProducts: state.products.similarProducts,
-    selectedProduct: state.products.selectedProduct
+    selectedProduct: state.products.selectedProduct,
+    selectedProductReviews: state.products.selectedProductReviews
   }
 }
 
@@ -107,6 +119,7 @@ const mapDispatchToProps = dispatch => {
     selectProduct: (productId) => {
       dispatch(receiveSingleProduct(productId))
       dispatch(receiveSimilarProducts(productId))
+      dispatch(receiveProductReviews(productId))
     }
   }
 }

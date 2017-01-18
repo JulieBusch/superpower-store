@@ -464,6 +464,14 @@ log-out-btn*/
 .product-thumbnail img {
   border-radius: 50%; }
 
+.reviews {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .reviews form {
+    display: flex; }
+
 .signin-container {
   background-color: gray; }
 >>>>>>> 871050f865225054602645f591d94a80433e47b8

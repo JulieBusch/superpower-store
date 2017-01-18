@@ -31,4 +31,15 @@
 
 .product-thumbnail img {
   border-radius: 50%; }
+<<<<<<< HEAD
 >>>>>>> 871050f865225054602645f591d94a80433e47b8
+=======
+
+.reviews {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .reviews form {
+    display: flex; }
+>>>>>>> e0179fd6bdd54262859181643021733bd365b970
