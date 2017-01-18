@@ -15,7 +15,6 @@ import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
 
-import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
 
 import {
   receiveAllProducts,
