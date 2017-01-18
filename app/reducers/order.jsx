@@ -102,15 +102,40 @@ export const selectOrderDetails = (orderId) =>
          .catch((failed) => dispatch(selectedOrderDetails([])))
       }
 
-export const addNewOrder = () =>
-   dispatch =>
-      axios.post('/api/order/')
+// export const addNewOrder = () =>
+//    dispatch =>
+//       axios.post('/api/orders/')
+//          .then(res => res.data)
+//          .then(newOrder =>  {
+//             dispatch(createdOrder(newOrder))
+//             return dispatch(selectedOrder(newOrder))
+//          })
+//          .catch(failed => console.log(failed))
+
+export const addNewOrder = (productId) => {
+   console.log('PRODUCTIDDDDD', productId)
+   var product_id = productId
+   return (dispatch, _, productId) => {
+      console.log('PRODUCTID', product_id)
+      axios.post('/api/orders/')
          .then(res => res.data)
          .then(newOrder =>  {
+
             dispatch(createdOrder(newOrder))
-            dispatch(selectedOrder(newOrder))
+            console.log('neworder ', newOrder)
+            return newOrder
          })
-         .catch(failed => console.log(failed))
+         .then(updatedOrder =>  {
+               dispatch(selectedOrder(updatedOrder))
+               return updatedOrder
+         })
+         .then(order => {
+            return axios.put(`/api/orders/${order.id}/product/${product_id}`)
+         })
+         .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder.data)))
+         .catch((failed) => console.log(failed))
+   }
+}
 
 
 export const getAllOrders = () =>

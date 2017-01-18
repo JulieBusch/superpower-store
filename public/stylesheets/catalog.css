@@ -15,18 +15,21 @@
   justify-content: space-between;
   margin-top: 100px; }
 
-.cart {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
-
 .catalog-tile {
   margin-top: 50px;
   margin-bottom: 50px; }
 
 .product-thumbnail img {
   border-radius: 50%; }
+
+.similar-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; }
+
+.similar-thumbnail img {
+  border-radius: 50%;
+  max-width: 100%; }
 
 .reviews {
   margin-top: 100px;

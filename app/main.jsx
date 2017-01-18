@@ -11,8 +11,10 @@ import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
 import Cart from './components/Cart'
+import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
+import Success from './components/Success'
 
 import {
   receiveAllProducts,
@@ -21,10 +23,7 @@ import {
   receiveProductReviews,
   clearSelectedProduct
   } from './reducers/products'
-
 import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
-import Success from './components/Success'
-
 import { selectUser, getAllUsers } from './reducers/user'
 
 
@@ -58,12 +57,11 @@ const onProductsEnter = (nextRouterState) => {
 }
 
 const onCartEnter = (nextRouterState) => {
-
-  store.dispatch(selectOrder(7))
-  .then(() => {
+  //store.dispatch(selectOrder(7))
+  //.then(() => {
     const orderId = store.getState().orders.selectedOrder.id
     store.dispatch(selectOrderDetails(orderId))
-  })
+  //})
 }
 
 const onSingleItemEnter = (nextRouterState) => {
@@ -86,6 +84,7 @@ render(
         <Route path="/success" component={Success} />
         <Route path="/review" component={ReviewForm} />
         <Route path="/cart" component={Cart} onEnter={onCartEnter}/>
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,

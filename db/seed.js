@@ -29,7 +29,7 @@ const productsArr = [
 	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
 	},
 	{
-	  name: 'Ethical X-ray Vision',
+	  name: 'Magnanimity',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'Ethical X-ray Vision gives you the ability to see through solid objects without compromising as much of your fellow citizens\' privacy. Our leading engineers have developed X-ray vision powers that will not reveal the nude body of another person if it is shielded by clothing or other barriers, but will not interfere with normal human vision when a person willingly disrobes in your presence. Your neighbors will appreciate knowing that their dignity remains intact.',
 	  price: 850000.00,

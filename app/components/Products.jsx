@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+
 import Splash from './Splash'
 import SingleProduct from './SingleProduct'
 
@@ -26,34 +27,37 @@ export class Products extends Component {
   render() {
 
     var productDivs = this.props.products.map((product) => {
-          return (
-            <div key={product.id} className="column-3 catalog-tile">
-              <h4>{product.name}</h4>
-              <div className="product-thumbnail">
-                <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
-                  <img src={product.thumbnail} />
-                </Link>
-              </div>
-            </div>
-          )
-      });
+
+      return (
+        <div key={product.id} className="column-3 catalog-tile">
+          <h4>{product.name}</h4>
+          <div className="product-thumbnail">
+            <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
+              <img src={product.thumbnail} />
+            </Link>
+          </div>
+        </div>
+      )
+    })
+
 
     return (
       <div>
         <Splash />
   	    <div className="container catalog">
+
           {this.props.selectedProduct.id && <SingleProduct />}
+
   		    {productDivs}
   	    </div>
       </div>
 		)
 	}
+
 }
 
 
-/* -----------------    CONTAINER     ------------------ */
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     products: state.products.products,
     similarProducts: state.products.similarProducts,
@@ -74,3 +78,4 @@ const mapDispatchToProps = dispatch => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
+

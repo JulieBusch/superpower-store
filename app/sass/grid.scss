@@ -21,7 +21,9 @@ body {
   text-align: center;
   width: 100%;
   justify-content: space-between;
+  flex-direction: row;
 }
+
 
 .column-2 {
   display: flex;
@@ -29,6 +31,7 @@ body {
   text-align: center;
   flex-direction: column;
 }
+
 
 .column-3 {
   display: flex;

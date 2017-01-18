@@ -45,6 +45,7 @@ export class Navbar extends React.Component {
   renderLoginSignup() {
     return (
       <div className="login-signup">
+
         <Link to="/signup" className="nav-margins" activeClassName="active">signup</Link>
 
         <Link to="#" activeClassName="active" className="nav-margins" onClick={this.handleClick}>login</Link>
