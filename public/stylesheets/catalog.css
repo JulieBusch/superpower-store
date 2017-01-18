@@ -19,17 +19,23 @@
   margin-top: 50px;
   margin-bottom: 50px; }
 
-.product-thumbnail img {
+.product-thumbnail {
   border-radius: 50%; }
+  .product-thumbnail img {
+    border-radius: 50%;
+    max-width: 100%; }
 
 .similar-items {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row; }
+  flex-direction: row;
+  justify-content: space-between; }
 
-.similar-thumbnail img {
-  border-radius: 50%;
-  max-width: 100%; }
+.similar-thumbnail {
+  border-radius: 50%; }
+  .similar-thumbnail img {
+    border-radius: 50%;
+    max-width: 100%; }
 
 .reviews {
   margin-top: 100px;
@@ -38,3 +44,70 @@
   align-items: center; }
   .reviews form {
     display: flex; }
+
+.flight {
+  background-color: paleturquoise; }
+
+.ethical-x-ray-vision {
+  background-color: white;
+  border: 2px solid black; }
+
+.super-speed {
+  background-color: tomato; }
+
+.telekinesis {
+  background-color: royalblue; }
+
+.precognition {
+  background-color: gold; }
+
+.telepathy {
+  background-color: lavender; }
+
+.occlusion {
+  background-color: gray; }
+
+.super-hearing {
+  background-color: lightpink; }
+
+.super-sight {
+  background-color: teal; }
+
+.super-smell {
+  background-color: yellowgreen; }
+
+.super-strength {
+  background-color: goldenrod; }
+
+.super-healing {
+  background-color: turquoise; }
+
+.ethical-invisibility {
+  background-color: peachpuff; }
+
+.energy-manipulation {
+  background-color: orange; }
+
+.shape-shifting {
+  background-color: olive; }
+
+.immortality {
+  background-color: dodgerblue; }
+
+.super-agility {
+  background-color: lightgreen; }
+
+.weather-manipulation {
+  background-color: lightskyblue; }
+
+.teleportation {
+  background-color: yellow; }
+
+hr {
+  margin-top: 60px;
+  background-color: darkgray;
+  height: 3px; }
+
+.review-link {
+  margin-top: 30px;
+  margin-bottom: 30px; }

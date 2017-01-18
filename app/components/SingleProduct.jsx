@@ -30,6 +30,17 @@ export class SingleProduct extends React.Component {
     // }
 
     this.handleCloseClick = this.handleCloseClick.bind(this)
+    this.nameParser = this.nameParser.bind(this)
+  }
+
+  nameParser(name) {
+    var nameArr = name.toLowerCase().split('');
+    for(var i = 0; i < nameArr.length; i++) {
+      if(nameArr[i] === ' ') {
+        nameArr[i] = '-'
+      }
+    }
+    return nameArr.join('');
   }
 
   handleCloseClick() {
@@ -53,13 +64,14 @@ export class SingleProduct extends React.Component {
 
   render() {
     var selectedProduct = this.props.selectedProduct
+    var imgClass = this.nameParser(selectedProduct.name)
     return (
       <div className="popUp">
         <div className="row">
 
-          <div className="column-2">
+          <div className={`column-2 product-thumbnail ${imgClass}`}>
             <Link to="#" onClick={this.handleCloseClick} >Close</Link>
-            <img src={selectedProduct.image} />
+            <img src={`./thumbnails/${selectedProduct.thumbnail}`} />
           </div>
 
           <div className="column-2">
@@ -87,7 +99,7 @@ export class SingleProduct extends React.Component {
 
         </div>
 
-        <div>
+        <div className="review-link">
           { this.props.currentUser ?
           <Link to="/review">Leave a Review of This Power</Link> :
           <Link to='/signup'>Sign up to leave a review</Link> }
@@ -104,19 +116,22 @@ export class SingleProduct extends React.Component {
             </div>)
           })}
         </div>
+        <hr />
         <div className="similar-items">
+          <h3>Similar Products</h3>
 
           {this.props.similarProducts.slice(0, 5).map((product) => {
             return (<div key={product.id} className="column-5 similar-tile">
               <h4>{product.name}</h4>
-              <div className="similar-thumbnail">
+              <div className={`similar-thumbnail ${this.nameParser(product.name)}`}>
                 <Link to='#' onClick={this.handleNewItemClick.bind(this, product.id)}>
-                  <img src={product.thumbnail} />
+                  <img src={`./thumbnails/${product.thumbnail}`} />
                 </Link>
               </div>
             </div>)
           })}
         </div>
+        <hr />
       </div>
     )
   }

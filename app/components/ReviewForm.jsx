@@ -23,6 +23,17 @@ export class Review extends React.Component {
     this.onStarClick = this.onStarClick.bind(this)
     this.formSubmission = this.formSubmission.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.nameParser = this.nameParser.bind(this)
+  }
+
+  nameParser(name) {
+    var nameArr = name.toLowerCase().split('');
+    for(var i = 0; i < nameArr.length; i++) {
+      if(nameArr[i] === ' ') {
+        nameArr[i] = '-'
+      }
+    }
+    return nameArr.join('');
   }
 
   handleChange(evt) {
@@ -81,8 +92,8 @@ export class Review extends React.Component {
     return (
       <div className="container reviews">
         <h3>{this.props.product.name}</h3>
-        <div>
-          <img src={this.props.product.image} />
+        <div className={`product-thumbnail ${this.nameParser(this.props.product.name)}`}>
+          <img src={`./thumbnails/${this.props.product.thumbnail}`} />
         </div>
         <span>Your Rating:</span>
         <StarRatingComponent
