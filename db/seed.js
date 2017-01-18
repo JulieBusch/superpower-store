@@ -172,6 +172,7 @@ const productsArr = [
     tags: ['not of this world', 'transportation'],
     thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
   }
+
 ]
 
 const reviewsArr = [
@@ -193,6 +194,7 @@ const reviewsArr = [
     user_id: 5,
     product_id: 2
   },
+
 ]
 
 const seedOrderlines = () => db.Promise.map([

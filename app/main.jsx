@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
+import Splash from './components/Splash'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
@@ -33,7 +34,6 @@ const ExampleApp = connect(
   ({ user, children }) =>
     <div>
       <Navbar />
-
       {children}
     </div>
 )
