@@ -1,19 +1,10 @@
-// .cart {
-// 	margin-top: 100px;
-// }
+
 
 .cart-thumbnail {
 	width: 150px;
 	border-radius: 50%;
 	margin-right: 15px;
 }
-
-// .cart-column {
-//   display: flex;
-//   width: 29%;
-//   //text-align: center;
-//   //flex-direction: column;
-// }
 
 .cart-column-2 {
   display: flex;
@@ -78,4 +69,8 @@
 
 #checkout-btn:hover {
   background-color: #4489f7;
+}
+
+#cart_conf {
+
 }

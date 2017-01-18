@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {Link, browserHistory} from 'react-router'
 
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -25,6 +25,9 @@ export class SingleProduct extends React.Component {
 
   constructor(props) {
     super(props)
+    // this.state = {
+    //   addBtnClicked: false
+    // }
 
     this.handleCloseClick = this.handleCloseClick.bind(this)
   }
@@ -38,16 +41,14 @@ export class SingleProduct extends React.Component {
   }
 
   handleAddItemToCart(productId) {
+  //  this.setState({ addBtnClicked: true })
+
     if (!this.props.selectedOrder.id) {
-      console.log('productid ', productId)
        this.props.addNewOrder(productId)
-      // .then( () => {
-      //    this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
-      // })
-    }
-    else {
+    } else {
     this.props.updateOrder({ orderId: this.props.selectedOrder.id, productId: productId })
     }
+
   }
 
   render() {
@@ -74,6 +75,11 @@ export class SingleProduct extends React.Component {
                 <Link to="/cart">
                   <button className="product-view-btns">Review Cart</button>
                 </Link>
+
+                 {
+                //   this.state.addButtonClicked && <div id="cart_conf">{selectedProduct.name} has been added to cart!</div>
+                 }
+
               </div>
             </div>
 

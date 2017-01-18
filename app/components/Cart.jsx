@@ -10,6 +10,9 @@ class Cart extends React.Component {
 
   constructor(props){
     super(props)
+    // this.state = {
+    //   clicked: false
+    // }
 
     this.handleClick = this.handleClick.bind(this)
 
@@ -17,12 +20,15 @@ class Cart extends React.Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(e.target.name)
+    const productId = e.target.name
+
+    // this.setState({  clicked : true  })
+
+    // setTimeOut(() => this.setState({  clicked : false  }), 2000)
 
     this.props.deleteItem({ orderId: this.props.order.id, productId: e.target.name})
-    // possibly render a quick 'deleted!' mesg
-    //console.log('hey handleclick')
   }
+
 
   render() {
 
@@ -69,6 +75,13 @@ class Cart extends React.Component {
             {!this.props.orderDetails.length && <div>Your shopping cart is empty!</div>}
 
         {orderDivs}
+
+        {
+          // this.state.clicked &&
+          // <div id="delete_conf">Item deleted!
+          // </div>
+        }
+
         <div className="cart-total-column">
           <div className="total">
             <h3>Total: {this.props.order.total}</h3>
