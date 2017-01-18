@@ -26,15 +26,15 @@ const productsArr = [
 	  description: 'Soar as high as you dare. No mechanical augmentation is required for our flight power; simply float freely at will. Maximum attainable speed while flying is 20mph. Flight speed can increase when Flight is combined with Super Speed.',
 	  price: 1200000.00,
 	  tags: ['natural non-human abilities', 'flight'],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+	  thumbnail: 'science-orbital-diagram@256px copy.png'
 	},
 	{
-	  name: 'Magnanimity',
+	  name: 'Ethical X-ray Vision',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'Ethical X-ray Vision gives you the ability to see through solid objects without compromising as much of your fellow citizens\' privacy. Our leading engineers have developed X-ray vision powers that will not reveal the nude body of another person if it is shielded by clothing or other barriers, but will not interfere with normal human vision when a person willingly disrobes in your presence. Your neighbors will appreciate knowing that their dignity remains intact.',
 	  price: 850000.00,
 	  tags: ['not of this world', 'ethical'],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+	  thumbnail: 'xrayglasses.png'
 	},
 	{
 	  name: 'Super Speed',
@@ -42,15 +42,15 @@ const productsArr = [
 	  description: 'Super Speed will enable you to not only run faster than imaginable, but will give you the power to quicken any movement you desire. React to any situation in the blink of an eye. Maximum attainable speed is 227mph. Combine with Flight and experience the thrill of a peregrin falcon\'s dive.',
 	  price: 1050000.00,
 	  tags: ['enhanced human capabilities', 'speed', 'transportation'],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+	  thumbnail: 'controls-gauge@256px copy.png'
 	},
 	{
 	  name: 'Telekinesis',
 	  image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
 	  description: 'Move physical objects with only a thought. Initially you will be able to move items up to 15 lbs. for approximately 10 seconds at a time. Our telekinesis strengthens with practice; you will find yourself able to move heavier objects and hold them in the air for longer periods as you exercise your new powers.',
 	  price: 1350000.00,
-	  tags: ['mind powers', 'not of this world'],
-	  thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+	  tags: ['psychic powers', 'not of this world'],
+	  thumbnail: 'science-hand-with-atom@256px copy.png'
 	},
   {
     name: 'Precognition',
@@ -58,15 +58,15 @@ const productsArr = [
     description: 'See the future, change your destiny. Precognition will give you visions of what is yet to come. Note: the effects of Precognition are not predictable. Visions cannot be called up at will; they will come to you at random and may be cryptic if not impossible to decipher. We feel that the potential benefits of seeing ahead in time, even in a relatively uncontrolled manner, are useful and worthy of our endorsement. But, should you feel your sanity unraveling after receiving this power, please contact our customer service line immediately.',
     price: 45000000.00,
     tags: ['psychic powers', 'not of this world'],
-    thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+    thumbnail: 'hourglassarrow (1).png'
   },
   {
     name: 'Telepathy',
     image:'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png',
-    description: 'Hear the secret thoughts of those around you. We have used cutting-edge science to bring to you the power to read the mind of any person who is not equipped with our Occlusion ability. Our most recent edition of Psychic Mind Reading allows you to tune in to an individual\'s thoughts when desired and tune out when necessary, avoiding the overwhelming din of hearing the thoughts of everyone around you at all times.',
+    description: 'Hear the secret thoughts of those around you. We have used cutting-edge science to bring to you the power to read the mind of any person who is not equipped with our Occlusion ability. Our most recent edition of Telepathy allows you to tune in to an individual\'s thoughts when desired and tune out when necessary, avoiding the overwhelming din of hearing the thoughts of everyone around you at all times.',
     price: 2900000.00,
     tags: ['psychic powers', 'not of this world'],
-    thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+    thumbnail: 'miscellaneous-sextant@256px copy.png'
   },
   {
     name: 'Occlusion',
@@ -82,7 +82,7 @@ const productsArr = [
     description: 'Hear every whisper within a .25-mile radius. Know where you stand in the workplace, where your children will really be this weekend, and more.',
     price: 900000.00,
     tags: ['enhanced human capabilities', 'hearing'],
-    thumbnail: 'https://placeholdit.imgix.net/~text?txtsize=28&bg=0099ff&txtclr=ffffff&txt=300%C3%97300&w=300&h=300&fm=png'
+    thumbnail: 'audio-and-sound-turntable@256px.png'
   },
   {
     name: 'Super Sight',
@@ -183,7 +183,7 @@ const reviewsArr = [
   },
   {
     rating: 5,
-    text: "I had no problems with temperature or oxygen while flying. I got the Flight/Super Speed combo and had a blast!",
+    text: "I had no problems with temperature or oxygen while flying. I highly recommend the Flight/Super Speed combo!",
     user_id: 2,
     product_id: 1
   },

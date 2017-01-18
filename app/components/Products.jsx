@@ -33,7 +33,7 @@ export class Products extends Component {
           <h4>{product.name}</h4>
           <div className="product-thumbnail">
             <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
-              <img src={product.thumbnail} />
+              <img src={`./thumbnails/${product.thumbnail}`} />
             </Link>
           </div>
         </div>
