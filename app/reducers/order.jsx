@@ -93,10 +93,8 @@ export const selectOrder = (orderId) =>
 
 export const selectOrderDetails = (orderId) =>
    dispatch => {
-      console.log("REDUCER")
       return axios.get(`/api/orders/${orderId}/orderline`)
          .then(res => {
-            console.log('RES.DATA ', res.data)
             return   res.data})
          .then((foundOrderDetails) => dispatch(selectedOrderDetails(foundOrderDetails)))
          .catch((failed) => dispatch(selectedOrderDetails([])))
@@ -113,26 +111,27 @@ export const selectOrderDetails = (orderId) =>
 //          .catch(failed => console.log(failed))
 
 export const addNewOrder = (productId) => {
-   console.log('PRODUCTIDDDDD', productId)
    var product_id = productId
    return (dispatch, _, productId) => {
-      console.log('PRODUCTID', product_id)
       axios.post('/api/orders/')
          .then(res => res.data)
          .then(newOrder =>  {
-
             dispatch(createdOrder(newOrder))
-            console.log('neworder ', newOrder)
             return newOrder
-         })
-         .then(updatedOrder =>  {
-               dispatch(selectedOrder(updatedOrder))
-               return updatedOrder
          })
          .then(order => {
             return axios.put(`/api/orders/${order.id}/product/${product_id}`)
          })
-         .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder.data)))
+         .then(updatedOrder => {
+            dispatch(updatedOrderProducts(updatedOrder.data))
+            return updatedOrder
+         })
+         .then((order) => {
+            return axios.get(`/api/orders/${order.data.id}/orderline`)
+         })
+         .then((foundOrderDetails) => {
+            dispatch(selectedOrderDetails(foundOrderDetails.data))
+            })
          .catch((failed) => console.log(failed))
    }
 }
@@ -175,19 +174,19 @@ export const updateOrderUser = (order) =>
          .catch((failed) => console.log(failed))
 
 export const updateOrder = (order) =>
-   dispatch =>
-      axios.put(`/api/orders/${order.orderId}/product/${order.productId}`)
+   dispatch => {
+      return axios.put(`/api/orders/${order.orderId}/product/${order.productId}`)
+      .then(res => res.data)
       .then(updatedOrder => dispatch(updatedOrderProducts(updatedOrder)))
          .catch((failed) => console.log(failed))
+   }
 
 export const deleteProductFromOrder = (order) =>
    dispatch =>
       axios.delete(`/api/orders/${order.orderId}/product/${order.productId}`)
          .then(() => dispatch(selectOrderDetails(order.orderId)))
          .then(() => {
-            console.log('DISPATCHING!  ')
             dispatch(selectOrder(order.orderId))
-
          })
          .catch((failed) => console.log(failed))
 
