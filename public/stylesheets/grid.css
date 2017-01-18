@@ -30,7 +30,6 @@ body {
 .column-3 {
   display: flex;
   width: 29%;
-  height: 29vw;
   text-align: center;
   flex-direction: column; }
 
