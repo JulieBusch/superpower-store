@@ -419,6 +419,12 @@ nav {
 a {
   text-decoration: none; }
 
+/*navbar-logo
+navbar-brand
+cart-icon
+login-signup
+logged-in
+log-out-btn*/
 .splash {
   height: 100vh;
   display: flex;
@@ -459,17 +465,6 @@ a {
   align-items: center; }
   .reviews form {
     display: flex; }
-
-
-.similar-items {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row; }
-
-.similar-thumbnail img {
-  border-radius: 50%;
-  max-width: 100%; }
-
 
 .signin-container {
   margin-top: 100px; }

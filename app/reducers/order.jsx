@@ -186,9 +186,7 @@ export const deleteProductFromOrder = (order) =>
       axios.delete(`/api/orders/${order.orderId}/product/${order.productId}`)
          .then(() => dispatch(selectOrderDetails(order.orderId)))
          .then(() => {
-            console.log('DISPATCHING!  ')
             dispatch(selectOrder(order.orderId))
-
          })
          .catch((failed) => console.log(failed))
 

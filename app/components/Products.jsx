@@ -11,10 +11,12 @@ import {
   receiveProductReviews
 } from '../reducers/products'
 
+
 export class Products extends Component {
 
   constructor(props) {
     super(props)
+    // this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick(productId) {
@@ -73,6 +75,7 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
 
