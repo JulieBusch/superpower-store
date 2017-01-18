@@ -34,7 +34,7 @@ const productsArr = [
 	  description: 'Ethical X-ray Vision gives you the ability to see through solid objects without compromising as much of your fellow citizens\' privacy. Our leading engineers have developed X-ray vision powers that will not reveal the nude body of another person if it is shielded by clothing or other barriers, but will not interfere with normal human vision when a person willingly disrobes in your presence. Your neighbors will appreciate knowing that their dignity remains intact.',
 	  price: 850000.00,
 	  tags: ['not of this world', 'ethical'],
-	  thumbnail: 'xrayglasses.png'
+	  thumbnail: 'xrayglasses_.png'
 	},
 	{
 	  name: 'Super Speed',
