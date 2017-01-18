@@ -16,12 +16,22 @@ export class Products extends Component {
 
   constructor(props) {
     super(props)
-    // this.handleClick = this.handleClick.bind(this)
+    this.nameParser = this.nameParser.bind(this)
   }
 
   handleClick(productId) {
     console.log('product id: ', productId)
     this.props.selectProduct(productId)
+  }
+
+  nameParser(name) {
+    var nameArr = name.toLowerCase().split('');
+    for(var i = 0; i < nameArr.length; i++) {
+      if(nameArr[i] === ' ') {
+        nameArr[i] = '-'
+      }
+    }
+    return nameArr.join('');
   }
 
   render() {
@@ -31,7 +41,7 @@ export class Products extends Component {
       return (
         <div key={product.id} className="column-3 catalog-tile">
           <h4>{product.name}</h4>
-          <div className="product-thumbnail">
+          <div className={`product-thumbnail ${this.nameParser(product.name)}`}>
             <Link to='#' onClick={this.handleClick.bind(this, product.id)}>
               <img src={`./thumbnails/${product.thumbnail}`} />
             </Link>
