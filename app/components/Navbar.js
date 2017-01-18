@@ -41,11 +41,11 @@ export class Navbar extends React.Component {
 
           </div>
         </nav>
-        {this.state.clicked &&
+        {this.state.clicked && !this.props.currentUser &&
           <div className="login">
             <form onSubmit={evt => {
               evt.preventDefault()
-              login(
+              this.props.login(
                 evt.target.username.value,
                 evt.target.password.value
               )
@@ -88,12 +88,12 @@ export class Navbar extends React.Component {
     return (
       <div>
 
-        <Link to={`/users/${userId}`} className="nav-margins" activeClassName="active">My Account</Link>
+        <Link to={`/users/${userId}`} className="nav-margins" activeClassName="active">my account</Link>
 
         <button
           className="log-out-btn nav-margins"
           onClick={this.props.logout}>
-          logout {name}
+          logout
         </button>
 
       </div>
@@ -115,11 +115,16 @@ const mapState = state => {
 //   };
 // };
 
-const mapDispatch = dispatch => ({
-  logout: () => {
-    dispatch(logOutUser())
-    // browserHistory.push('/'); // removed to demo logout instant re-render
+const mapDispatch = dispatch => {
+  return {
+    logout: () => {
+      dispatch(logOutUser())
+      // browserHistory.push('/'); // removed to demo logout instant re-render
+    },
+    login: (user, pw) => {
+      dispatch(login(user, pw))
+    }
   }
-});
+}
 
 export default connect(mapState, mapDispatch)(Navbar)
