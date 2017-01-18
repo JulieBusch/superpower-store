@@ -10,11 +10,12 @@ import Navbar from './components/Navbar'
 import SignUp from './components/SignUp'
 import Userpage from './components/Userpage'
 import Products from './components/Products'
+import Splash from './components/Splash'
 import Cart from './components/Cart'
 import Checkout from './components/Checkout'
 import SingleProduct from './components/SingleProduct'
 import ReviewForm from './components/ReviewForm'
-
+import Success from './components/Success'
 
 import {
   receiveAllProducts,
@@ -23,10 +24,7 @@ import {
   receiveProductReviews,
   clearSelectedProduct
   } from './reducers/products'
-
 import { getOpenOrderByUserId, selectOrderDetails, selectOrder } from './reducers/order'
-import Success from './components/Success'
-
 import { selectUser, getAllUsers } from './reducers/user'
 
 
@@ -36,7 +34,6 @@ const ExampleApp = connect(
   ({ user, children }) =>
     <div>
       <Navbar />
-
       {children}
     </div>
 )

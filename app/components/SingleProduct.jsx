@@ -104,7 +104,7 @@ export class SingleProduct extends React.Component {
             </div>)
           })}
         </div>
-        <div className="similar-items">
+        <div className="similar-items column-2">
 
           {this.props.similarProducts.slice(0, 5).map((product) => {
             return (<div key={product.id} className="column-5 similar-tile">
