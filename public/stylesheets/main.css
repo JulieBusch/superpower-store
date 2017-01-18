@@ -361,21 +361,12 @@ body {
   justify-content: space-between;
   flex-direction: row; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
 .column-2 {
   display: flex;
   width: 48%;
   text-align: center;
   flex-direction: column; }
 
-<<<<<<< HEAD
->>>>>>> 871050f865225054602645f591d94a80433e47b8
-=======
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
 .column-3 {
   display: flex;
   width: 29%;
@@ -421,36 +412,13 @@ nav {
 
 .nav-margins {
   margin-left: 10px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-  margin-right: 10px; }
-=======
-=======
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
   margin-right: 10px;
   color: white;
   font-size: 20px; }
 
 a {
   text-decoration: none; }
-<<<<<<< HEAD
->>>>>>> 871050f865225054602645f591d94a80433e47b8
-=======
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
 
-/*navbar-logo
-navbar-brand
-cart-icon
-login-signup
-logged-in
-log-out-btn*/
-<<<<<<< HEAD
-<<<<<<< HEAD
-.catalog {
-  justify-content: space-between; }
-=======
-=======
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
 .splash {
   height: 100vh;
   display: flex;
@@ -475,7 +443,6 @@ log-out-btn*/
 .product-thumbnail img {
   border-radius: 50%; }
 
-<<<<<<< HEAD
 .reviews {
   margin-top: 100px;
   display: flex;
@@ -484,10 +451,6 @@ log-out-btn*/
   .reviews form {
     display: flex; }
 
-.signin-container {
-  background-color: gray; }
->>>>>>> 871050f865225054602645f591d94a80433e47b8
-=======
 .similar-items {
   display: flex;
   flex-wrap: wrap;
@@ -551,4 +514,3 @@ log-out-btn*/
 
 #checkout-btn:hover {
   background-color: #4489f7; }
->>>>>>> 36e03a9f45a22cc06c18e83757b50398af41fcff
